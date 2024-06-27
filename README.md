@@ -20,9 +20,22 @@ The xMCU is a Hardware Abstraction Layer (HAL) utilizing the power and flexibili
   - stm32l0 - rm0451
   - stm32wb - rm0434
 
+## Get started
+
+First, add the xmcu submodule to your Git repository. The following command clones xmcu into the "externals" directory:
+```
+git submodule add https://github.com/xEmbeddedTools/xmcu.git externals/xmcu
+```
+
+Next, add the specific SoC submodule you are interested in. For example, to add stm32wb/rm0434:
+```
+cd externals/xmcu
+git submodule update --init soc/ST/m4/stm32wb/rm0434/
+```
+
 ## Usage
 
-Examples of usage you can find here in another repository.
+Examples of usage you can find here (under development) in another repository.
 
 ## Contribution and Support
 
