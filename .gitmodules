@@ -1,0 +1,3 @@
+[submodule "soc/ST/m4/stm32wb/rm0434"]
+	path = soc/ST/m4/stm32wb/rm0434
+	url = https://github.com/xEmbeddedTools/xsoc_st_rm0434.git
