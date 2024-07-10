@@ -39,7 +39,9 @@ Examples of usage you can find here (under development) in another repository.
 
 ## Contribution and Support
 
-We welcome contributions from the community to help improve and extend the xMCU Project. Please refer to the Contributing Guide for more details on how to contribute. For support and questions, feel free to open an issue on GitHub or contact us at main@xembedded.io
+We welcome contributions from the community to help improve and extend the xMCU Project. To ensure consistency and maintain quality, please adhere to our [Coding Standards](https://github.com/xEmbeddedTools/xmcu/blob/main/conding_standard.md) when contributing.
+
+For support and questions, feel free to open an issue on GitHub or contact us at main@xembedded.io.
 
 ## License
 
