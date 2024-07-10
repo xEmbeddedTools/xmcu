@@ -7,11 +7,11 @@
 #include <cstdint>
 
 // xmcu
-#include <xmcu/Non_constructible.hpp>
+#include <xmcu/non_constructible.hpp>
 #include <xmcu/various.hpp>
 
 namespace xmcu {
-class bit_flag : private Non_constructible
+class bit_flag : private non_constructible
 {
 public:
     template<typename Register_t, typename Flag_t> constexpr static bool is(Register_t a_register, Flag_t a_flag)

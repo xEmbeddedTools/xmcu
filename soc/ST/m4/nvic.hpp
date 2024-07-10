@@ -11,7 +11,7 @@
 #pragma GCC diagnostic pop
 
 // xmcu
-#include <xmcu/Non_constructible.hpp>
+#include <xmcu/non_constructible.hpp>
 #include <xmcu/Non_copyable.hpp>
 #include <xmcu/bit.hpp>
 #include <xmcu/various.hpp>
@@ -23,7 +23,7 @@
 namespace xmcu {
 namespace soc {
 namespace m4 {
-class nvic : private xmcu::Non_constructible
+class nvic : private xmcu::non_constructible
 {
 public:
     enum class Mode : std::uint32_t

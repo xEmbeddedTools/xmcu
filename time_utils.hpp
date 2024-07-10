@@ -6,11 +6,11 @@
 
 // xmcu
 #include <xmcu/Duration.hpp>
-#include <xmcu/Non_constructible.hpp>
+#include <xmcu/non_constructible.hpp>
 #include <xmcu/Not_null.hpp>
 
 namespace xmcu {
-struct time_utils : private Non_constructible
+struct time_utils : private non_constructible
 {
     struct Timestamp
     {

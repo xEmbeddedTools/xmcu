@@ -8,7 +8,7 @@
 
 // xmcu
 #include <xmcu/bit_flag.hpp>
-#include <xmcu/Non_constructible.hpp>
+#include <xmcu/non_constructible.hpp>
 
 #pragma GCC diagnostic ignored "-Wvolatile"
 #if defined(STM32WB)
@@ -22,7 +22,7 @@
 
 namespace xmcu {
 namespace debug {
-class assertion : private Non_constructible
+class assertion : private non_constructible
 {
 public:
 #if defined(ASSERTION_TRAP_ENTER_ENABLED)
