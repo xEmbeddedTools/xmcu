@@ -7,10 +7,10 @@
 #include <cstdint>
 
 // xmcu
-#include <xmcu/Non_constructible.hpp>
+#include <xmcu/non_constructible.hpp>
 
 namespace xmcu {
-class bit : private Non_constructible
+class bit : private non_constructible
 {
 public:
     template<typename Register_t> constexpr static bool is(Register_t a_register, uint8_t a_index)

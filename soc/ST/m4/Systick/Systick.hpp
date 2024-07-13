@@ -135,7 +135,7 @@ void systick_interrupt_handler();
 
 namespace xmcu {
 namespace soc {
-template<std::uint32_t id> class peripheral<m4::Systick, id> : private Non_constructible
+template<std::uint32_t id> class peripheral<m4::Systick, id> : private non_constructible
 {
 public:
     static m4::Systick create()

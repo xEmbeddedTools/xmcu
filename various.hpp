@@ -9,10 +9,10 @@
 #include <type_traits>
 
 // xmcu
-#include <xmcu/Non_constructible.hpp>
+#include <xmcu/non_constructible.hpp>
 
 namespace xmcu {
-struct various : private Non_constructible
+struct various : private non_constructible
 {
     template<typename Type_t> constexpr static Type_t get_enum_incorrect_value()
     {
