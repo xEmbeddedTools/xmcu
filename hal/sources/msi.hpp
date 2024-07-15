@@ -7,7 +7,7 @@
 #if defined(STM32WB)
 #include <xmcu/soc/ST/m4/stm32wb/rm0434/sources/msi.hpp>
 #elif defined(STM32L0)
-#include <xmcu/soc/ST/m0/stm32l0/rm0451/sources/msi.hpp>
+#include <xmcu/soc/ST/arm/m0/stm32l0/rm0451/sources/msi.hpp>
 #endif
 
 namespace xmcu {

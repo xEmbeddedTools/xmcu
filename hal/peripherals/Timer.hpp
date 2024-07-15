@@ -8,7 +8,7 @@
 #include <xmcu/soc/ST/m4/stm32wb/rm0434/peripherals/Timer/LPTIM.hpp>
 #include <xmcu/soc/ST/m4/stm32wb/rm0434/peripherals/Timer/TIM.hpp>
 #elif defined(STM32L0)
-#include <xmcu/soc/ST/m0/stm32l0/rm0451/peripherals/Timer/LPTIM.hpp>
+#include <xmcu/soc/ST/arm/m0/stm32l0/rm0451/peripherals/Timer/LPTIM.hpp>
 #endif
 
 namespace xmcu {

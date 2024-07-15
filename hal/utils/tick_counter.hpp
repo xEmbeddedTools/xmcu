@@ -7,7 +7,7 @@
 #if defined(STM32WB)
 #include <xmcu/soc/ST/m4/stm32wb/rm0434/utils/tick_counter.hpp>
 #elif defined(STM32L0)
-#include <xmcu/soc/ST/m0/stm32l0/rm0451/utils/tick_counter.hpp>
+#include <xmcu/soc/ST/arm/m0/stm32l0/rm0451/utils/tick_counter.hpp>
 #endif
 
 namespace xmcu {
