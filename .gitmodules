@@ -1,5 +1,5 @@
 [submodule "soc/ST/m4/stm32wb/rm0434"]
-	path = soc/ST/m4/stm32wb/rm0434
+	path = soc/ST/arm/m4/stm32wb/rm0434
 	url = https://github.com/xEmbeddedTools/xsoc_st_rm0434.git
 [submodule "soc/ST/m0/stm32l0/rm0451"]
 	path = soc/ST/arm/m0/stm32l0/rm0451

@@ -5,7 +5,7 @@
 
 // xmcu
 #if defined(STM32WB)
-#include <xmcu/soc/ST/m4/stm32wb/rm0434/utils/delay.hpp>
+#include <xmcu/soc/ST/arm/m4/stm32wb/rm0434/utils/delay.hpp>
 #elif defined(STM32L0)
 #include <xmcu/soc/ST/arm/m0/stm32l0/rm0451/utils/delay.hpp>
 #endif

@@ -5,7 +5,7 @@
 
 // xmcu
 #if defined(M4)
-#include <xmcu/soc/ST/m4/nvic.hpp>
+#include <xmcu/soc/ST/arm/m4/nvic.hpp>
 #elif defined(M0) || defined(M0_PLUS)
 #include <xmcu/soc/ST/arm/m0/nvic.hpp>
 #endif
