@@ -1,5 +1,10 @@
 # Coding Standards
 
+## Formatting
+
+- Refer to the [clang-format configuration file](link-to-clang-format-file) for the base standard.
+- Prioritize readability over adherence to the clang-format configuration when conflicts arise.
+
 ## Names
 
 ### Snake Case
