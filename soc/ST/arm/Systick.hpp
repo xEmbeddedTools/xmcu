@@ -8,21 +8,23 @@
 #include <utility>
 
 // externals
-#ifdef STM32WB
 #pragma GCC diagnostic ignored "-Wvolatile"
+#if defined(STM32L0)
+#include <stm32l0xx.h>
+#elif defined(STM32WB)
 #include <stm32wbxx.h>
-#pragma GCC diagnostic pop
 #endif
+#pragma GCC diagnostic pop
 
 // xmcu
 #include <xmcu/Non_copyable.hpp>
 #include <xmcu/bit_flag.hpp>
-#include <xmcu/soc/ST/m4/IRQ_config.hpp>
+#include <xmcu/soc/ST/arm/IRQ_config.hpp>
 #include <xmcu/soc/peripheral.hpp>
 
 namespace xmcu {
 namespace soc {
-namespace m4 {
+
 class Systick : private Non_copyable
 {
 public:
@@ -82,7 +84,7 @@ public:
     Systick(Systick&&) = default;
     Systick& operator=(Systick&&) = default;
 
-    Systick()
+    constexpr Systick()
         : idx(std::numeric_limits<decltype(this->idx)>::max())
     {
         this->polling.p_systick = nullptr;
@@ -115,7 +117,7 @@ public:
     Interrupt interrupt;
 
 private:
-    Systick(std::uint32_t a_idx)
+    constexpr Systick(std::uint32_t a_idx)
         : idx(a_idx)
     {
         this->polling.p_systick = this;
@@ -128,19 +130,20 @@ private:
     template<typename Periph_t, std::uint32_t periph_id> friend class soc::peripheral;
     friend void systick_interrupt_handler();
 };
+
 void systick_interrupt_handler();
-} // namespace m4
+
 } // namespace soc
 } // namespace xmcu
 
 namespace xmcu {
 namespace soc {
-template<std::uint32_t id> class peripheral<m4::Systick, id> : private non_constructible
+template<std::uint32_t id> class peripheral<Systick, id> : private non_constructible
 {
 public:
-    static m4::Systick create()
+    static constexpr Systick create()
     {
-        return m4::Systick(0);
+        return Systick(0);
     }
 };
 } // namespace soc

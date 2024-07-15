@@ -1,23 +1,27 @@
 /**/
 
 // this
-#include <xmcu/soc/ST/m4/Systick/Systick.hpp>
+#include <xmcu/soc/ST/arm/Systick.hpp>
 
 // xmcu
 #include <xmcu/soc/Scoped_guard.hpp>
+#if defined(M0) || defined(M0_PLUS)
+#include <xmcu/soc/ST/m0/nvic.hpp>
+#elif defined(M4)
 #include <xmcu/soc/ST/m4/nvic.hpp>
+#endif
 
 // debug
 #include <xmcu/assertion.hpp>
 
 namespace {
-using namespace xmcu::soc::m4;
+using namespace xmcu::soc;
 
 Systick* irq_context[1] = { nullptr };
 } // namespace
 
 extern "C" {
-using namespace xmcu::soc::m4;
+using namespace xmcu::soc;
 
 void SysTick_Handler()
 {
@@ -27,11 +31,13 @@ void SysTick_Handler()
 
 namespace xmcu {
 namespace soc {
-namespace m4 {
-using namespace xmcu;
+
 using namespace xmcu::debug;
-#if defined(M4)
-using namespace xmcu::soc::m4;
+
+#if defined(M0) || defined(M0_PLUS)
+using nvic = m0::nvic;
+#elif defined(M4)
+using nvic = m4::nvic;
 #endif
 
 void systick_interrupt_handler()
@@ -76,12 +82,12 @@ void Systick::disable()
 
 void Systick::start()
 {
-    xmcu::bit_flag::set(&(SysTick->CTRL), SysTick_CTRL_ENABLE_Msk);
+    bit_flag::set(&(SysTick->CTRL), SysTick_CTRL_ENABLE_Msk);
 }
 
 void Systick::stop()
 {
-    xmcu::bit_flag::clear(&(SysTick->CTRL), SysTick_CTRL_ENABLE_Msk);
+    bit_flag::clear(&(SysTick->CTRL), SysTick_CTRL_ENABLE_Msk);
 }
 
 void Systick::Interrupt::enable(const IRQ_config& a_irq_config)
@@ -117,6 +123,6 @@ void Systick::Interrupt::unregister_callback()
     Scoped_guard<nvic> guard;
     this->p_systick->callback = { nullptr, nullptr };
 }
-} // namespace m4
+
 } // namespace soc
 } // namespace xmcu
