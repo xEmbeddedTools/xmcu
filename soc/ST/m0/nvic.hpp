@@ -6,7 +6,7 @@
 #include <stm32l0xx.h>
 
 // xmcu
-#include <xmcu/Non_constructible.hpp>
+#include <xmcu/non_constructible.hpp>
 #include <xmcu/Non_copyable.hpp>
 #include <xmcu/various.hpp>
 #include <xmcu/soc/Scoped_guard.hpp>
@@ -18,7 +18,7 @@ namespace xmcu {
 namespace soc {
 namespace m0 {
 
-class nvic : private xmcu::Non_constructible
+class nvic : private xmcu::non_constructible
 {
 public:
     enum class Mode : uint32_t
