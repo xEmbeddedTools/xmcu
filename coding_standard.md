@@ -2,7 +2,7 @@
 
 ## Formatting
 
-- Refer to the [clang-format configuration file](link-to-clang-format-file) for the base standard.
+- Refer to the [clang-format configuration file](https://github.com/xEmbeddedTools/xmcu/blob/main/clang-format.txt) for the base standard.
 - Prioritize readability over adherence to the clang-format configuration when conflicts arise.
 
 ## Names
