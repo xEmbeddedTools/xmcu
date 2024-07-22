@@ -49,7 +49,7 @@
 - Include necessary headers for the standard libraries you are using.
 - Avoid using deprecated standard library features.
 - Do not use `using namespace std;`.
-- Use `std` types for `cstdint` or `stdint.h`.
+- Use `std` types from `cstdint`.
 
 ## Miscellaneous
 
