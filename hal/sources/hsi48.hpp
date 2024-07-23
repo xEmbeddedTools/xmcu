@@ -5,7 +5,7 @@
 
 //hkmmu
 #if defined(STM32WB)
-#include <xmcu/soc/ST/m4/stm32wb/rm0434/sources/hsi48.hpp>
+#include <xmcu/soc/ST/arm/m4/stm32wb/rm0434/sources/hsi48.hpp>
 #endif
 
 namespace xmcu {
