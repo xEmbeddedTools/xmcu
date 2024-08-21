@@ -43,6 +43,10 @@ We welcome contributions from the community to help improve and extend the xMCU 
 
 For support and questions, feel free to open an issue on GitHub or contact us at main@xembedded.io.
 
+## Roadmap
+
+To view the detailed roadmap for this project, please visit our official page: [https://xembedded.io/xmcu-roadmap/](https://xembedded.io/xmcu-roadmap/). 
+
 ## License
 
 The xMCU Project is licensed under the Apache 2.0 License. See the LICENSE file for more details.
