@@ -67,7 +67,7 @@ void Systick::enable(std::uint32_t a_start_value, Prescaler a_prescaler)
 
     SysTick->CTRL = 0x0u;
     SysTick->LOAD = a_start_value;
-    SysTick->VAL  = 0x0u;
+    SysTick->VAL = 0x0u;
     SysTick->CTRL = static_cast<std::uint32_t>(a_prescaler) | SysTick_CTRL_TICKINT_Msk;
 }
 
@@ -79,18 +79,18 @@ void Systick::disable()
     }
 
     SysTick->LOAD = 0x0u;
-    SysTick->VAL  = 0x0u;
+    SysTick->VAL = 0x0u;
     SysTick->CTRL = 0x0u;
 }
 
 void Systick::start()
 {
-    bit_flag::set(&(SysTick->CTRL), SysTick_CTRL_ENABLE_Msk);
+    bit::flag::set(&(SysTick->CTRL), SysTick_CTRL_ENABLE_Msk);
 }
 
 void Systick::stop()
 {
-    bit_flag::clear(&(SysTick->CTRL), SysTick_CTRL_ENABLE_Msk);
+    bit::flag::clear(&(SysTick->CTRL), SysTick_CTRL_ENABLE_Msk);
 }
 
 void Systick::Interrupt::enable(const IRQ_config& a_irq_config)
