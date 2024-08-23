@@ -21,7 +21,7 @@
 
 // xmcu
 #include <xmcu/Non_copyable.hpp>
-#include <xmcu/bit_flag.hpp>
+#include <xmcu/bit.hpp>
 #include <xmcu/soc/ST/arm/IRQ_config.hpp>
 #include <xmcu/soc/peripheral.hpp>
 
@@ -103,7 +103,7 @@ public:
 
     bool is_enabled()
     {
-        return bit_flag::is(SysTick->CTRL, SysTick_CTRL_ENABLE_Msk);
+        return bit::flag::is(SysTick->CTRL, SysTick_CTRL_ENABLE_Msk);
     }
 
     operator SysTick_Type*()
