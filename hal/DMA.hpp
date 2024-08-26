@@ -15,7 +15,7 @@
 namespace xmcu {
 namespace hal {
 #if defined(STM32WB)
-template<typename Perihperal_t = void*> using DMA = xmcu::soc::m4::stm32wb::DMA<Perihperal_t>;
+template<typename Perihperal_t = void*> using DMA = xmcu::soc::m4::stm32wb::rm0434::DMA<Perihperal_t>;
 #elif defined(STM32L0)
 template<typename Perihperal_t = void*> using DMA = xmcu::soc::m0::stm32l0::rm0451::DMA<Perihperal_t>;
 #endif

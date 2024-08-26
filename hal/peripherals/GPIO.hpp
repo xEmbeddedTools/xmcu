@@ -17,7 +17,7 @@ namespace hal {
 namespace peripherals {
 
 #if defined(STM32WB)
-using GPIO = xmcu::soc::m4::stm32wb::peripherals::GPIO;
+using GPIO = xmcu::soc::m4::stm32wb::rm0434::peripherals::GPIO;
 #elif defined(STM32L0x0)
 using GPIO = xmcu::soc::m0::stm32l0::rm0451::peripherals::GPIO;
 #endif

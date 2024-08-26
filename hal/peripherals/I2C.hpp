@@ -16,7 +16,7 @@ namespace xmcu {
 namespace hal {
 namespace peripherals {
 #if defined(STM32WB)
-using I2C  = xmcu::soc::m4::stm32wb::peripherals::I2C;
+using I2C  = xmcu::soc::m4::stm32wb::rm0434::peripherals::I2C;
 #elif defined(STM32L0)
 // using I2C  = xmcu::soc::m0::stm32l0::rm0451::peripherals::I2C;
 #endif

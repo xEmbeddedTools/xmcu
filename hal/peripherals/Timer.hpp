@@ -17,9 +17,9 @@ namespace xmcu {
 namespace hal {
 namespace peripherals {
 #if defined(STM32WB)
-using LPTIM = xmcu::soc::m4::stm32wb::peripherals::LPTIM;
-using TIM_ADV = xmcu::soc::m4::stm32wb::peripherals::TIM_ADV;
-using TIM_G16 = xmcu::soc::m4::stm32wb::peripherals::TIM_G16;
+using LPTIM = xmcu::soc::m4::stm32wb::rm0434::peripherals::LPTIM;
+using TIM_ADV = xmcu::soc::m4::stm32wb::rm0434::peripherals::TIM_ADV;
+using TIM_G16 = xmcu::soc::m4::stm32wb::rm0434::peripherals::TIM_G16;
 #elif defined(STM32L0)
 using LPTIM = xmcu::soc::m0::stm32l0::rm0451::peripherals::LPTIM;
 #endif

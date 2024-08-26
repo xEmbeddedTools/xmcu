@@ -16,7 +16,7 @@ namespace xmcu {
 namespace hal {
 namespace system {
 #if defined(STM32WB)
-template<typename MCU_t> using pwr = xmcu::soc::m4::stm32wb::system::pwr<MCU_t>;
+template<typename MCU_t> using pwr = xmcu::soc::m4::stm32wb::rm0434::system::pwr<MCU_t>;
 #elif defined(STM32L0x0)
 template<typename MCU_t> using pwr = xmcu::soc::m0::stm32l0::rm0451::system::pwr<MCU_t>;
 #endif
