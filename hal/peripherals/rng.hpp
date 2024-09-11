@@ -14,7 +14,7 @@ namespace xmcu {
 namespace hal {
 namespace peripherals {
 #if defined(STM32WB)
-using rng = xmcu::soc::m4::stm32wb::peripherals::rng;
+using rng = xmcu::soc::m4::stm32wb::rm0434::peripherals::rng;
 #endif
 } // namespace peripherals
 } // namespace hal
