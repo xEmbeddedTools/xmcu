@@ -14,7 +14,7 @@ namespace xmcu {
 namespace hal {
 namespace sources {
 #if defined(STM32WB)
-using lsi = xmcu::soc::m4::stm32wb::sources::lsi;
+using lsi = xmcu::soc::m4::stm32wb::rm0434::sources::lsi;
 #endif
 } // namespace sources
 } // namespace hal

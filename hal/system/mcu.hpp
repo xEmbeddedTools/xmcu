@@ -16,7 +16,7 @@ namespace xmcu {
 namespace hal {
 namespace system {
 #if defined(STM32WB)
-template<std::size_t id> using mcu = xmcu::soc::m4::stm32wb::system::mcu<id>;
+template<std::size_t id> using mcu = xmcu::soc::m4::stm32wb::rm0434::system::mcu<id>;
 #elif defined(STM32L0)
 template<std::size_t id> using mcu = xmcu::soc::m0::stm32l0::rm0451::system::mcu<id>;
 #endif

@@ -14,7 +14,7 @@ namespace xmcu {
 namespace hal {
 namespace system {
 #if defined(STM32WB)
-using hsem = xmcu::soc::m4::stm32wb::system::hsem;
+using hsem = xmcu::soc::m4::stm32wb::rm0434::system::hsem;
 #endif
 } // namespace system
 } // namespace hal

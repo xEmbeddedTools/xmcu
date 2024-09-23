@@ -9,7 +9,7 @@
 #include <cstdint>
 
 // xmcu
-#include <xmcu/bit_flag.hpp>
+#include <xmcu/bit.hpp>
 #include <xmcu/non_constructible.hpp>
 
 #pragma GCC diagnostic ignored "-Wvolatile"
@@ -72,31 +72,32 @@ public:
 
 #if defined(HKM_ASSERT_ENABLED)
 #if defined(ASSERTION_TRAP_ENTER_ENABLED)
-#define hkm_assert(expression)                                                                                    \
-    do                                                                                                            \
-    {                                                                                                             \
-        if (false == (expression))                                                                                \
-        {                                                                                                         \
-            xmcu::debug::assertion::print(__FILE__, static_cast<uint32_t>(__LINE__), #expression);                      \
-            if (xmcu::debug::assertion::Trap_enter_mode::enabled == xmcu::debug::assertion::assertion::get_Trap_enter_mode()) \
-            {                                                                                                     \
-                []() -> bool {                                                                                    \
-                    __BKPT(0);                                                                                    \
-                    return true;                                                                                  \
-                }();                                                                                              \
-            }                                                                                                     \
-            xmcu::debug::assertion::halt();                                                                             \
-        }                                                                                                         \
+#define hkm_assert(expression)                                                                     \
+    do                                                                                             \
+    {                                                                                              \
+        if (false == (expression))                                                                 \
+        {                                                                                          \
+            xmcu::debug::assertion::print(__FILE__, static_cast<uint32_t>(__LINE__), #expression); \
+            if (xmcu::debug::assertion::Trap_enter_mode::enabled ==                                \
+                xmcu::debug::assertion::assertion::get_Trap_enter_mode())                          \
+            {                                                                                      \
+                []() -> bool {                                                                     \
+                    __BKPT(0);                                                                     \
+                    return true;                                                                   \
+                }();                                                                               \
+            }                                                                                      \
+            xmcu::debug::assertion::halt();                                                        \
+        }                                                                                          \
     } while (false)
 #else
-#define hkm_assert(expression)                                                               \
-    do                                                                                       \
-    {                                                                                        \
-        if (false == (expression))                                                           \
-        {                                                                                    \
+#define hkm_assert(expression)                                                                     \
+    do                                                                                             \
+    {                                                                                              \
+        if (false == (expression))                                                                 \
+        {                                                                                          \
             xmcu::debug::assertion::print(__FILE__, static_cast<uint32_t>(__LINE__), #expression); \
             xmcu::debug::assertion::halt();                                                        \
-        }                                                                                    \
+        }                                                                                          \
     } while (false)
 #endif
 #else

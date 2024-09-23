@@ -20,8 +20,8 @@ namespace xmcu {
 namespace hal {
 namespace peripherals {
 #if defined(STM32WB)
-using LPUART = xmcu::soc::m4::stm32wb::peripherals::LPUART;
-using USART = xmcu::soc::m4::stm32wb::peripherals::USART;
+using LPUART = xmcu::soc::m4::stm32wb::rm0434::peripherals::LPUART;
+using USART = xmcu::soc::m4::stm32wb::rm0434::peripherals::USART;
 #elif defined(STM32L0x0)
 using LPUART = xmcu::soc::m0::stm32l0::rm0451::peripherals::LPUART;
 using USART = xmcu::soc::m0::stm32l0::rm0451::peripherals::USART;
