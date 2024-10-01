@@ -22,7 +22,11 @@ struct various : private non_constructible
         return static_cast<Type_t>(std::numeric_limits<std::underlying_type_t<Type_t>>::max());
     }
 
-    // TODO: replace with std::to_underlying() when we migrate to cpp23 and gcc11+
+    template<typename Type_t, std::size_t count> constexpr static std::size_t countof(Type_t (&arr)[count])
+    {
+        return std::extent<Type_t[count]>::value;
+    }
+
     template<typename t_enum_type>
     constexpr static std::underlying_type_t<t_enum_type> to_underlying(t_enum_type a_enum)
     {
