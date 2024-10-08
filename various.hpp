@@ -27,6 +27,7 @@ struct various : private non_constructible
         return std::extent<Type_t[count]>::value;
     }
 
+    // TODO: replace with std::to_underlying() when we migrate to cpp23 and gcc11+
     template<typename t_enum_type>
     constexpr static std::underlying_type_t<t_enum_type> to_underlying(t_enum_type a_enum)
     {
