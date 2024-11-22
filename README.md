@@ -30,7 +30,7 @@ git submodule add https://github.com/xEmbeddedTools/xmcu.git externals/xmcu
 Next, add the specific SoC submodule you are interested in. For example, to add stm32wb/rm0434:
 ```
 cd externals/xmcu
-git submodule update --init soc/ST/arm/m4/stm32wb/rm0434/
+git submodule update --init soc/ST/arm/m4/wb/rm0434/
 ```
 
 ## Usage

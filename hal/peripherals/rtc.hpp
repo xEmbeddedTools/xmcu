@@ -7,14 +7,14 @@
 
 // xmcu
 #if defined(STM32WB)
-#include <xmcu/soc/ST/arm/m4/stm32wb/rm0434/peripherals/rtc/rtc.hpp>
+#include <xmcu/soc/ST/arm/m4/wb/rm0434/peripherals/rtc/rtc.hpp>
 #endif
 
 namespace xmcu {
 namespace hal {
 namespace peripherals {
 #if defined(STM32WB)
-using rtc = xmcu::soc::m4::stm32wb::rm0434::peripherals::rtc;
+using rtc = xmcu::soc::m4::wb::rm0434::peripherals::rtc;
 #endif
 } // namespace peripherals
 } // namespace hal
