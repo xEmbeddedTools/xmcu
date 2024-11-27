@@ -5,21 +5,19 @@
  *  Licensed under the Apache License, Version 2.0. See LICENSE file in the project root for details.
  */
 
-// xmcu
-#if defined(STM32WB)
-#include <xmcu/soc/ST/arm/m4/wb/rm0434/rcc.hpp>
-#elif defined(STM32L0)
-#include <xmcu/soc/ST/arm/m0/l0/rm0451/rcc.hpp>
-#endif
+// std
+#include <limits>
 
-namespace xmcu {
-namespace hal {
-#if defined(STM32WB)
+// xmcu
+#include <xmcu/hal/config.hpp>
+
+// clang-format off
+// soc
+#include DECORATE_INCLUDE_PATH(xmcu/soc/XMCU_SOC_VENDOR/XMCU_SOC_ARCHITECTURE/XMCU_SOC_CORE_FAMILY/XMCU_SOC_VENDOR_FAMILY/XMCU_SOC_VENDOR_FAMILY_RM/rcc.hpp)
+// clang-format on
+
+namespace xmcu::hal {
 template<typename Perihperal_t, std::size_t id_t = std::numeric_limits<std::size_t>::max()> using rcc =
-    xmcu::soc::m4::wb::rm0434::rcc<Perihperal_t, id_t>;
-#elif defined(STM32L0)
-template<typename Perihperal_t, std::size_t id_t = std::numeric_limits<std::size_t>::max()> using rcc =
-    xmcu::soc::m0::l0::rm0451::rcc<Perihperal_t, id_t>;
-#endif
-} // namespace hal
-} // namespace xmcu
+    xmcu::soc::XMCU_SOC_VENDOR::XMCU_SOC_ARCHITECTURE::XMCU_SOC_CORE_FAMILY::XMCU_SOC_VENDOR_FAMILY::
+        XMCU_SOC_VENDOR_FAMILY_RM::rcc<Perihperal_t, id_t>;
+} // namespace xmcu::hal

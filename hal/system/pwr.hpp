@@ -6,20 +6,14 @@
  */
 
 // xmcu
-#if defined(STM32WB)
-#include <xmcu/soc/ST/arm/m4/wb/rm0434/system/pwr/pwr.hpp>
-#elif defined(STM32L0x0)
-#include <xmcu/soc/ST/arm/m0/l0/rm0451/system/pwr/pwr.hpp>
-#endif
+#include <xmcu/hal/config.hpp>
 
-namespace xmcu {
-namespace hal {
-namespace system {
-#if defined(STM32WB)
-template<typename MCU_t> using pwr = xmcu::soc::m4::wb::rm0434::system::pwr<MCU_t>;
-#elif defined(STM32L0x0)
-template<typename MCU_t> using pwr = xmcu::soc::m0::l0::rm0451::system::pwr<MCU_t>;
-#endif
-} // namespace system
-} // namespace hal
-} // namespace xmcu
+// clang-format off
+// soc
+#include DECORATE_INCLUDE_PATH(xmcu/soc/XMCU_SOC_VENDOR/XMCU_SOC_ARCHITECTURE/XMCU_SOC_CORE_FAMILY/XMCU_SOC_VENDOR_FAMILY/XMCU_SOC_VENDOR_FAMILY_RM/system/pwr/pwr.hpp)
+// clang-format on
+
+namespace xmcu::hal::system {
+template<typename MCU_t> using pwr = xmcu::soc::XMCU_SOC_VENDOR::XMCU_SOC_ARCHITECTURE::XMCU_SOC_CORE_FAMILY::
+    XMCU_SOC_VENDOR_FAMILY::XMCU_SOC_VENDOR_FAMILY_RM::system::pwr<MCU_t>;
+} // namespace xmcu::hal::system

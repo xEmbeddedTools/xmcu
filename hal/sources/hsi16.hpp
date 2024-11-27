@@ -5,21 +5,15 @@
  *  Licensed under the Apache License, Version 2.0. See LICENSE file in the project root for details.
  */
 
-//xmcu
-#if defined(STM32WB)
-#include <xmcu/soc/ST/arm/m4/wb/rm0434/sources/hsi16.hpp>
-#elif defined(STM32L0)
-#include <xmcu/soc/ST/arm/m0/l0/rm0451/sources/hsi16.hpp>
-#endif
+// xmcu
+#include <xmcu/hal/config.hpp>
 
-namespace xmcu {
-namespace hal {
-namespace sources {
-#if defined(STM32WB)
-using hsi16 = xmcu::soc::m4::wb::rm0434::sources::hsi16;
-#elif defined(STM32L0)
-using hsi16 = xmcu::soc::m0::l0::rm0451::sources::hsi16;
-#endif
-} // namespace sources
-} // namespace hal
-} // namespace xmcu
+// clang-format off
+// soc
+#include DECORATE_INCLUDE_PATH(xmcu/soc/XMCU_SOC_VENDOR/XMCU_SOC_ARCHITECTURE/XMCU_SOC_CORE_FAMILY/XMCU_SOC_VENDOR_FAMILY/XMCU_SOC_VENDOR_FAMILY_RM/sources/hsi16.hpp)
+// clang-format on
+
+namespace xmcu::hal::sources {
+using hsi16 = xmcu::soc::XMCU_SOC_VENDOR::XMCU_SOC_ARCHITECTURE::XMCU_SOC_CORE_FAMILY::XMCU_SOC_VENDOR_FAMILY::
+    XMCU_SOC_VENDOR_FAMILY_RM::sources::hsi16;
+} // namespace xmcu::hal::sources

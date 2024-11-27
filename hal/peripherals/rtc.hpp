@@ -6,16 +6,14 @@
  */
 
 // xmcu
-#if defined(STM32WB)
-#include <xmcu/soc/ST/arm/m4/wb/rm0434/peripherals/rtc/rtc.hpp>
-#endif
+#include <xmcu/hal/config.hpp>
 
-namespace xmcu {
-namespace hal {
-namespace peripherals {
-#if defined(STM32WB)
-using rtc = xmcu::soc::m4::wb::rm0434::peripherals::rtc;
-#endif
-} // namespace peripherals
-} // namespace hal
-} // namespace xmcu
+// clang-format off
+// soc
+#include DECORATE_INCLUDE_PATH(xmcu/soc/XMCU_SOC_VENDOR/XMCU_SOC_ARCHITECTURE/XMCU_SOC_CORE_FAMILY/XMCU_SOC_VENDOR_FAMILY/XMCU_SOC_VENDOR_FAMILY_RM/peripherals/rtc/rtc.hpp)
+// clang-format on
+
+namespace xmcu::hal::peripherals {
+using rtc = xmcu::soc::XMCU_SOC_VENDOR::XMCU_SOC_ARCHITECTURE::XMCU_SOC_CORE_FAMILY::XMCU_SOC_VENDOR_FAMILY::
+    XMCU_SOC_VENDOR_FAMILY_RM::peripherals::rtc;
+} // namespace xmcu::hal::peripherals

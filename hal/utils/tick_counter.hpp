@@ -6,20 +6,14 @@
  */
 
 // xmcu
-#if defined(STM32WB)
-#include <xmcu/soc/ST/arm/m4/wb/rm0434/utils/tick_counter.hpp>
-#elif defined(STM32L0)
-#include <xmcu/soc/ST/arm/m0/l0/rm0451/utils/tick_counter.hpp>
-#endif
+#include <xmcu/hal/config.hpp>
 
-namespace xmcu {
-namespace hal {
-namespace utils {
-#if defined(STM32WB)
-template<typename Period_t> using tick_counter = xmcu::soc::m4::wb::rm0434::utils::tick_counter<Period_t>;
-#elif defined(STM32L0)
-template<typename Period_t> using tick_counter = xmcu::soc::m0::l0::rm0451::utils::tick_counter<Period_t>;
-#endif
-} // namespace utils
-} // namespace hal
-} // namespace xmcu
+// clang-format off
+// soc
+#include DECORATE_INCLUDE_PATH(xmcu/soc/XMCU_SOC_VENDOR/XMCU_SOC_ARCHITECTURE/XMCU_SOC_CORE_FAMILY/XMCU_SOC_VENDOR_FAMILY/XMCU_SOC_VENDOR_FAMILY_RM/utils/tick_counter.hpp)
+// clang-format on
+
+namespace xmcu::hal::utils {
+template<typename Period_t> using tick_counter = xmcu::soc::XMCU_SOC_VENDOR::XMCU_SOC_ARCHITECTURE::
+    XMCU_SOC_CORE_FAMILY::XMCU_SOC_VENDOR_FAMILY::XMCU_SOC_VENDOR_FAMILY_RM::utils::tick_counter<Period_t>;
+} // namespace xmcu::hal::utils

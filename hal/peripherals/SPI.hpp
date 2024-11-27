@@ -6,20 +6,14 @@
  */
 
 // xmcu
-#if defined(STM32WB)
-#include <xmcu/soc/ST/arm/m4/wb/rm0434/peripherals/SPI/SPI.hpp>
-#elif defined(STM32L0x0)
-#include <xmcu/soc/ST/arm/m0/l0/rm0451/peripherals/SPI/SPI.hpp>
-#endif
+#include <xmcu/hal/config.hpp>
 
-namespace xmcu {
-namespace hal {
-namespace peripherals {
-#if defined(STM32WB)
-using SPI = xmcu::soc::m4::wb::rm0434::peripherals::SPI;
-#elif defined(STM32L0x0)
-using SPI = xmcu::soc::m0::l0::rm0451::peripherals::SPI;
-#endif
-} // namespace peripherals
-} // namespace hal
-} // namespace xmcu
+// clang-format off
+// soc
+#include DECORATE_INCLUDE_PATH(xmcu/soc/XMCU_SOC_VENDOR/XMCU_SOC_ARCHITECTURE/XMCU_SOC_CORE_FAMILY/XMCU_SOC_VENDOR_FAMILY/XMCU_SOC_VENDOR_FAMILY_RM/peripherals/SPI/SPI.hpp)
+// clang-format on
+
+namespace xmcu::hal::peripherals {
+using SPI = xmcu::soc::XMCU_SOC_VENDOR::XMCU_SOC_ARCHITECTURE::XMCU_SOC_CORE_FAMILY::XMCU_SOC_VENDOR_FAMILY::
+    XMCU_SOC_VENDOR_FAMILY_RM::peripherals::SPI;
+} // namespace xmcu::hal::peripherals

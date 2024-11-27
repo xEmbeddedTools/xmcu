@@ -6,6 +6,20 @@
  */
 
 // xmcu
+#include <xmcu/hal/config.hpp>
+
+// clang-format off
+// soc
+#include DECORATE_INCLUDE_PATH(xmcu/soc/XMCU_SOC_VENDOR/XMCU_SOC_ARCHITECTURE/XMCU_SOC_CORE_FAMILY/XMCU_SOC_VENDOR_FAMILY/XMCU_SOC_VENDOR_FAMILY_RM/peripherals/Timer/LPTIM.hpp)
+// clang-format on
+
+namespace xmcu::hal::peripherals {
+using LPTIM = xmcu::soc::XMCU_SOC_VENDOR::XMCU_SOC_ARCHITECTURE::XMCU_SOC_CORE_FAMILY::XMCU_SOC_VENDOR_FAMILY::
+    XMCU_SOC_VENDOR_FAMILY_RM::peripherals::LPTIM;
+} // namespace xmcu::hal::peripherals
+
+/*
+// xmcu
 #if defined(STM32WB)
 #include <xmcu/soc/ST/arm/m4/wb/rm0434/peripherals/Timer/LPTIM.hpp>
 #include <xmcu/soc/ST/arm/m4/wb/rm0434/peripherals/Timer/TIM.hpp>
@@ -26,3 +40,4 @@ using LPTIM = xmcu::soc::m0::l0::rm0451::peripherals::LPTIM;
 } // namespace peripherals
 } // namespace hal
 } // namespace xmcu
+*/

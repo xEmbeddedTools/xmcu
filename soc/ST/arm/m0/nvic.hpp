@@ -9,18 +9,15 @@
 #include <stm32l0xx.h>
 
 // xmcu
-#include <xmcu/non_constructible.hpp>
 #include <xmcu/Non_copyable.hpp>
-#include <xmcu/various.hpp>
+#include <xmcu/non_constructible.hpp>
 #include <xmcu/soc/Scoped_guard.hpp>
+#include <xmcu/various.hpp>
 
-//debug
+// debug
 #include <xmcu/assertion.hpp>
 
-namespace xmcu {
-namespace soc {
-namespace m0 {
-
+namespace xmcu::soc::st::arm::m0 {
 class nvic : private xmcu::non_constructible
 {
 public:
@@ -81,28 +78,24 @@ public:
     }
 };
 
-} // namespace m0
-} // namespace soc
-} // namespace xmcu
+} // namespace xmcu::soc::st::arm::m0
 
-namespace xmcu {
-namespace soc {
-template<> class Scoped_guard<m0::nvic> : private xmcu::Non_copyable
+namespace xmcu::soc {
+template<> class Scoped_guard<st::arm::m0::nvic> : private xmcu::Non_copyable
 {
 public:
     Scoped_guard()
-        : mode(m0::nvic::get_mode())
+        : mode(st::arm::m0::nvic::get_mode())
     {
-        m0::nvic::set_mode(m0::nvic::Mode::disabled);
+        st::arm::m0::nvic::set_mode(st::arm::m0::nvic::Mode::disabled);
     }
 
     ~Scoped_guard()
     {
-        m0::nvic::set_mode(this->mode);
+        st::arm::m0::nvic::set_mode(this->mode);
     }
 
 private:
-    m0::nvic::Mode mode;
+    st::arm::m0::nvic::Mode mode;
 };
-} // namespace soc
-} // namespace xmcu
+} // namespace xmcu::soc
