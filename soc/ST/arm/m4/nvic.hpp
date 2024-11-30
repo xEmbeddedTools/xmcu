@@ -9,23 +9,19 @@
 #include <cstdint>
 
 // externals
-#pragma GCC diagnostic ignored "-Wvolatile"
 #include <stm32wbxx.h>
-#pragma GCC diagnostic pop
 
 // xmcu
-#include <xmcu/non_constructible.hpp>
 #include <xmcu/Non_copyable.hpp>
 #include <xmcu/bit.hpp>
-#include <xmcu/various.hpp>
+#include <xmcu/non_constructible.hpp>
 #include <xmcu/soc/Scoped_guard.hpp>
+#include <xmcu/various.hpp>
 
 // debug
 #include <xmcu/assertion.hpp>
 
-namespace xmcu {
-namespace soc {
-namespace m4 {
+namespace xmcu::soc::st::arm::m4 {
 class nvic : private xmcu::non_constructible
 {
 public:
@@ -92,28 +88,24 @@ public:
         return static_cast<Mode>(__get_PRIMASK());
     }
 };
-} // namespace m4
-} // namespace soc
-} // namespace xmcu
+} // namespace xmcu::soc::st::arm::m4
 
-namespace xmcu {
-namespace soc {
-template<> class Scoped_guard<m4::nvic> : private xmcu::Non_copyable
+namespace xmcu::soc {
+template<> class Scoped_guard<st::arm::m4::nvic> : private xmcu::Non_copyable
 {
 public:
     Scoped_guard()
-        : mode(m4::nvic::get_mode())
+        : mode(st::arm::m4::nvic::get_mode())
     {
-        m4::nvic::set_mode(m4::nvic::Mode::disabled);
+        st::arm::m4::nvic::set_mode(st::arm::m4::nvic::Mode::disabled);
     }
 
     ~Scoped_guard()
     {
-        m4::nvic::set_mode(this->mode);
+        st::arm::m4::nvic::set_mode(this->mode);
     }
 
 private:
-    m4::nvic::Mode mode;
+    st::arm::m4::nvic::Mode mode;
 };
-} // namespace soc
-} // namespace xmcu
+} // namespace xmcu::soc

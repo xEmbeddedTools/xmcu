@@ -38,7 +38,7 @@ using namespace xmcu::debug;
 #if defined(M0) || defined(M0_PLUS)
 using nvic = st::arm::m0::nvic;
 #elif defined(M4)
-using nvic = m4::nvic;
+using nvic = st::arm::m4::nvic;
 #endif
 
 void systick_interrupt_handler()
