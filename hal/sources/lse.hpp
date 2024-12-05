@@ -5,17 +5,15 @@
  *  Licensed under the Apache License, Version 2.0. See LICENSE file in the project root for details.
  */
 
-//xmcu
-#if defined(STM32WB)
-#include <xmcu/soc/ST/arm/m4/wb/rm0434/sources/lse.hpp>
-#endif
+// xmcu
+#include <xmcu/hal/config.hpp>
 
-namespace xmcu {
-namespace hal {
-namespace sources {
-#if defined(STM32WB)
-using lse = xmcu::soc::m4::wb::rm0434::sources::lse;
-#endif
-} // namespace sources
-} // namespace hal
-} // namespace xmcu
+// clang-format off
+// soc
+#include DECORATE_INCLUDE_PATH(xmcu/soc/XMCU_SOC_VENDOR/XMCU_SOC_ARCHITECTURE/XMCU_SOC_CORE_FAMILY/XMCU_SOC_VENDOR_FAMILY/XMCU_SOC_VENDOR_FAMILY_RM/sources/lse.hpp)
+// clang-format on
+
+namespace xmcu::hal::sources {
+using lse = xmcu::soc::XMCU_SOC_VENDOR::XMCU_SOC_ARCHITECTURE::XMCU_SOC_CORE_FAMILY::XMCU_SOC_VENDOR_FAMILY::
+    XMCU_SOC_VENDOR_FAMILY_RM::sources::lse;
+} // namespace xmcu::hal::sources

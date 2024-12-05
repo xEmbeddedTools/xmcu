@@ -6,18 +6,14 @@
  */
 
 // xmcu
-#if defined(STM32WB)
-#include <xmcu/soc/ST/arm/m4/wb/rm0434/DMA.hpp>
-#elif defined(STM32L0)
-#include <xmcu/soc/ST/arm/m0/l0/rm0451/DMA.hpp>
-#endif
+#include <xmcu/hal/config.hpp>
 
-namespace xmcu {
-namespace hal {
-#if defined(STM32WB)
-template<typename Perihperal_t = void*> using DMA = xmcu::soc::m4::wb::rm0434::DMA<Perihperal_t>;
-#elif defined(STM32L0)
-template<typename Perihperal_t = void*> using DMA = xmcu::soc::m0::l0::rm0451::DMA<Perihperal_t>;
-#endif
-} // namespace hal
-} // namespace xmcu
+// clang-format off
+// soc
+#include DECORATE_INCLUDE_PATH(xmcu/soc/XMCU_SOC_VENDOR/XMCU_SOC_ARCHITECTURE/XMCU_SOC_CORE_FAMILY/XMCU_SOC_VENDOR_FAMILY/XMCU_SOC_VENDOR_FAMILY_RM/DMA.hpp)
+// clang-format on
+
+namespace xmcu::hal {
+template<typename Perihperal_t = void*> using DMA = xmcu::soc::XMCU_SOC_VENDOR::XMCU_SOC_ARCHITECTURE::
+    XMCU_SOC_CORE_FAMILY::XMCU_SOC_VENDOR_FAMILY::XMCU_SOC_VENDOR_FAMILY_RM::DMA<Perihperal_t>;
+} // namespace xmcu::hal

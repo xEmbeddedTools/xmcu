@@ -5,21 +5,15 @@
  *  Licensed under the Apache License, Version 2.0. See LICENSE file in the project root for details.
  */
 
-//xmcu
-#if defined(STM32WB)
-#include <xmcu/soc/ST/arm/m4/wb/rm0434/sources/msi.hpp>
-#elif defined(STM32L0)
-#include <xmcu/soc/ST/arm/m0/l0/rm0451/sources/msi.hpp>
-#endif
+// xmcu
+#include <xmcu/hal/config.hpp>
 
-namespace xmcu {
-namespace hal {
-namespace sources {
-#if defined(STM32WB)
-using msi = xmcu::soc::m4::wb::rm0434::sources::msi;
-#elif defined(STM32L0)
-using msi = xmcu::soc::m0::l0::rm0451::sources::msi;
-#endif
-} // namespace sources
-} // namespace hal
-} // namespace xmcu
+// clang-format off
+// soc
+#include DECORATE_INCLUDE_PATH(xmcu/soc/XMCU_SOC_VENDOR/XMCU_SOC_ARCHITECTURE/XMCU_SOC_CORE_FAMILY/XMCU_SOC_VENDOR_FAMILY/XMCU_SOC_VENDOR_FAMILY_RM/sources/msi.hpp)
+// clang-format on
+
+namespace xmcu::hal::sources {
+using msi = xmcu::soc::XMCU_SOC_VENDOR::XMCU_SOC_ARCHITECTURE::XMCU_SOC_CORE_FAMILY::XMCU_SOC_VENDOR_FAMILY::
+    XMCU_SOC_VENDOR_FAMILY_RM::sources::msi;
+} // namespace xmcu::hal::sources

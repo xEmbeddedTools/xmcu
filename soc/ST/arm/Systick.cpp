@@ -32,15 +32,13 @@ void SysTick_Handler()
 }
 }
 
-namespace xmcu {
-namespace soc {
-
+namespace xmcu::soc {
 using namespace xmcu::debug;
 
 #if defined(M0) || defined(M0_PLUS)
-using nvic = m0::nvic;
+using nvic = st::arm::m0::nvic;
 #elif defined(M4)
-using nvic = m4::nvic;
+using nvic = st::arm::m4::nvic;
 #endif
 
 void systick_interrupt_handler()
@@ -126,6 +124,4 @@ void Systick::Interrupt::unregister_callback()
     Scoped_guard<nvic> guard;
     this->p_systick->callback = { nullptr, nullptr };
 }
-
-} // namespace soc
-} // namespace xmcu
+} // namespace xmcu::soc

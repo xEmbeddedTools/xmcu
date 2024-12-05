@@ -6,22 +6,14 @@
  */
 
 // xmcu
-#if defined(STM32WB)
-#include <xmcu/soc/ST/arm/m4/wb/rm0434/peripherals/GPIO/GPIO.hpp>
-#elif defined(STM32L0x0)
-#include <xmcu/soc/ST/arm/m0/l0/rm0451/peripherals/GPIO/GPIO.hpp>
-#endif
+#include <xmcu/hal/config.hpp>
 
-namespace xmcu {
-namespace hal {
-namespace peripherals {
+// clang-format off
+// soc
+#include DECORATE_INCLUDE_PATH(xmcu/soc/XMCU_SOC_VENDOR/XMCU_SOC_ARCHITECTURE/XMCU_SOC_CORE_FAMILY/XMCU_SOC_VENDOR_FAMILY/XMCU_SOC_VENDOR_FAMILY_RM/peripherals/GPIO/GPIO.hpp)
+// clang-format on
 
-#if defined(STM32WB)
-using GPIO = xmcu::soc::m4::wb::rm0434::peripherals::GPIO;
-#elif defined(STM32L0x0)
-using GPIO = xmcu::soc::m0::l0::rm0451::peripherals::GPIO;
-#endif
-
-} // namespace peripherals
-} // namespace hal
-} // namespace xmcu
+namespace xmcu::hal::peripherals {
+using GPIO = xmcu::soc::XMCU_SOC_VENDOR::XMCU_SOC_ARCHITECTURE::XMCU_SOC_CORE_FAMILY::XMCU_SOC_VENDOR_FAMILY::
+    XMCU_SOC_VENDOR_FAMILY_RM::peripherals::GPIO;
+} // namespace xmcu::hal::peripherals
