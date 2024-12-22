@@ -11,23 +11,14 @@
 // std
 #include <cstdlib>
 
-#if defined(XMCU_PCLKS_PRESENT) || defined(XMCU_PCLK_PRESENT)
+#if defined(XMCU_PCLK_PRESENT)
 // clang-format off
 // soc
 #include DECORATE_INCLUDE_PATH(xmcu/soc/XMCU_SOC_VENDOR/XMCU_SOC_ARCHITECTURE/XMCU_SOC_CORE_FAMILY/XMCU_SOC_VENDOR_FAMILY/XMCU_SOC_VENDOR_FAMILY_RM/clocks/pclk.hpp)
 // clang-format on
-#endif
 
-#if defined(XMCU_PCLKS_PRESENT)
 namespace xmcu::hal::clocks {
 template<std::size_t id> using pclk = xmcu::soc::XMCU_SOC_VENDOR::XMCU_SOC_ARCHITECTURE::XMCU_SOC_CORE_FAMILY::
     XMCU_SOC_VENDOR_FAMILY::XMCU_SOC_VENDOR_FAMILY_RM::clocks::pclk<id>;
-}
-#endif
-
-#if defined(XMCU_PCLK_PRESENT)
-namespace xmcu::hal::clocks {
-using pclk = xmcu::soc::XMCU_SOC_VENDOR::XMCU_SOC_ARCHITECTURE::XMCU_SOC_CORE_FAMILY::XMCU_SOC_VENDOR_FAMILY::
-    XMCU_SOC_VENDOR_FAMILY_RM::clocks::pclk;
 }
 #endif
