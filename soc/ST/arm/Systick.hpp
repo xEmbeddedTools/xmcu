@@ -20,10 +20,10 @@
 #pragma GCC diagnostic pop
 
 // xmcu
+#include <soc/ST/arm/IRQ_config.hpp>
+#include <soc/peripheral.hpp>
 #include <xmcu/Non_copyable.hpp>
 #include <xmcu/bit.hpp>
-#include <xmcu/soc/ST/arm/IRQ_config.hpp>
-#include <xmcu/soc/peripheral.hpp>
 
 namespace xmcu {
 namespace soc {

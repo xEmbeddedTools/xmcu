@@ -11,7 +11,7 @@
 // xmcu
 #include <xmcu/Non_copyable.hpp>
 #include <xmcu/non_constructible.hpp>
-#include <xmcu/soc/Scoped_guard.hpp>
+#include <soc/Scoped_guard.hpp>
 #include <xmcu/various.hpp>
 
 // debug
