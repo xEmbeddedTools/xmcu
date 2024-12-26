@@ -6,11 +6,11 @@
  */
 
 #if defined(XMCU_SOC_MODEL_STM32L010F4P6) || defined(XMCU_SOC_MODEL_STM32L010C6T6)
-#include <xmcu/soc/ST/arm/m0/l0/rm0451/config.hpp>
+#include <soc/ST/arm/m0/l0/rm0451/config.hpp>
 #endif
 
 #if defined(XMCU_SOC_MODEL_STM32WB35CEU6A)
-#include <xmcu/soc/ST/arm/m4/wb/rm0434/config.hpp>
+#include <soc/ST/arm/m4/wb/rm0434/config.hpp>
 #endif
 
 #define DECORATE_INCLUDE_PATH(x) <x>

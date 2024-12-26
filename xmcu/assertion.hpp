@@ -13,7 +13,7 @@
 #include <xmcu/non_constructible.hpp>
 
 #pragma GCC diagnostic ignored "-Wvolatile"
-#if defined(STM32WB)
+#if defined(XMCU_SOC_MODEL_STM32WB35CEU6A)
 #include <stm32wbxx.h>
 #define ASSERTION_TRAP_ENTER_ENABLED
 #elif defined(STM32L0)

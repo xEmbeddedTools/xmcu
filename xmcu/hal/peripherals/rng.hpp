@@ -7,7 +7,7 @@
 
 // xmcu
 #if defined(STM32WB)
-#include <xmcu/soc/ST/arm/m4/wb/rm0434/peripherals/rng/rng.hpp>
+#include <soc/ST/arm/m4/wb/rm0434/peripherals/rng/rng.hpp>
 #endif
 
 namespace xmcu {

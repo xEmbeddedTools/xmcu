@@ -6,7 +6,7 @@
  */
 
 // xmcu
-#include <xmcu/soc/ST/arm/IRQ_config.hpp>
+#include <soc/ST/arm/IRQ_config.hpp>
 
 namespace xmcu {
 namespace hal {

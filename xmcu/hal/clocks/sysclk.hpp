@@ -6,7 +6,7 @@
  */
 
 // xmcu
-#include <xmcu/hal/config.hpp>
+#include <xmcu/config.hpp>
 
 // std
 #include <cstdlib>
@@ -14,7 +14,7 @@
 #if defined(XMCU_SYSCLK_PRESENT)
 // clang-format off
 // soc
-#include DECORATE_INCLUDE_PATH(xmcu/soc/XMCU_SOC_VENDOR/XMCU_SOC_ARCHITECTURE/XMCU_SOC_CORE_FAMILY/XMCU_SOC_VENDOR_FAMILY/XMCU_SOC_VENDOR_FAMILY_RM/clocks/sysclk.hpp)
+#include DECORATE_INCLUDE_PATH(soc/XMCU_SOC_VENDOR/XMCU_SOC_ARCHITECTURE/XMCU_SOC_CORE_FAMILY/XMCU_SOC_VENDOR_FAMILY/XMCU_SOC_VENDOR_FAMILY_RM/clocks/sysclk.hpp)
 // clang-format on
 
 namespace xmcu::hal::clocks {

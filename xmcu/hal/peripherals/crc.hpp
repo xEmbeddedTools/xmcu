@@ -6,11 +6,11 @@
  */
 
 // xmcu
-#include <xmcu/hal/config.hpp>
+#include <xmcu/config.hpp>
 
 // clang-format off
 // soc
-#include DECORATE_INCLUDE_PATH(xmcu/soc/XMCU_SOC_VENDOR/XMCU_SOC_ARCHITECTURE/XMCU_SOC_CORE_FAMILY/XMCU_SOC_VENDOR_FAMILY/XMCU_SOC_VENDOR_FAMILY_RM/peripherals/crc/crc.hpp)
+#include DECORATE_INCLUDE_PATH(soc/XMCU_SOC_VENDOR/XMCU_SOC_ARCHITECTURE/XMCU_SOC_CORE_FAMILY/XMCU_SOC_VENDOR_FAMILY/XMCU_SOC_VENDOR_FAMILY_RM/peripherals/crc/crc.hpp)
 // clang-format on
 
 namespace xmcu::hal::peripherals {
