@@ -4,14 +4,15 @@
  */
 
 // this
-#include <xmcu/soc/ST/arm/Systick.hpp>
+#include <xmcu/config.hpp>
+#include <soc/ST/arm/Systick.hpp>
 
 // xmcu
-#include <xmcu/soc/Scoped_guard.hpp>
-#if defined(M0) || defined(M0_PLUS)
-#include <xmcu/soc/ST/arm/m0/nvic.hpp>
-#elif defined(M4)
-#include <xmcu/soc/ST/arm/m4/nvic.hpp>
+#include <soc/Scoped_guard.hpp>
+#if defined(XMCU_SOC_CORE_FAMILY_M0)
+#include <soc/ST/arm/m0/nvic.hpp>
+#elif defined(XMCU_SOC_CORE_FAMILY_M4)
+#include <soc/ST/arm/m4/nvic.hpp>
 #endif
 
 // debug
@@ -35,9 +36,9 @@ void SysTick_Handler()
 namespace xmcu::soc {
 using namespace xmcu::debug;
 
-#if defined(M0) || defined(M0_PLUS)
+#if defined(XMCU_SOC_CORE_FAMILY_M0)
 using nvic = st::arm::m0::nvic;
-#elif defined(M4)
+#elif defined(XMCU_SOC_CORE_FAMILY_M4)
 using nvic = st::arm::m4::nvic;
 #endif
 

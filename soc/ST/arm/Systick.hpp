@@ -12,9 +12,9 @@
 
 // externals
 #pragma GCC diagnostic ignored "-Wvolatile"
-#if defined(STM32L0)
+#if defined(XMCU_SOC_MODEL_STM32L010F4P6)
 #include <stm32l0xx.h>
-#elif defined(STM32WB)
+#elif defined(XMCU_SOC_MODEL_STM32WB35CEU6A)
 #include <stm32wbxx.h>
 #endif
 #pragma GCC diagnostic pop
