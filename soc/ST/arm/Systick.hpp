@@ -12,18 +12,18 @@
 
 // externals
 #pragma GCC diagnostic ignored "-Wvolatile"
-#if defined(STM32L0)
+#if defined(XMCU_SOC_MODEL_STM32L010F4P6)
 #include <stm32l0xx.h>
-#elif defined(STM32WB)
+#elif defined(XMCU_SOC_MODEL_STM32WB35CEU6A)
 #include <stm32wbxx.h>
 #endif
 #pragma GCC diagnostic pop
 
 // xmcu
+#include <soc/ST/arm/IRQ_config.hpp>
+#include <soc/peripheral.hpp>
 #include <xmcu/Non_copyable.hpp>
 #include <xmcu/bit.hpp>
-#include <xmcu/soc/ST/arm/IRQ_config.hpp>
-#include <xmcu/soc/peripheral.hpp>
 
 namespace xmcu {
 namespace soc {

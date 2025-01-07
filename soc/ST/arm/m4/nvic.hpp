@@ -12,10 +12,10 @@
 #include <stm32wbxx.h>
 
 // xmcu
+#include <soc/Scoped_guard.hpp>
 #include <xmcu/Non_copyable.hpp>
 #include <xmcu/bit.hpp>
 #include <xmcu/non_constructible.hpp>
-#include <xmcu/soc/Scoped_guard.hpp>
 #include <xmcu/various.hpp>
 
 // debug
