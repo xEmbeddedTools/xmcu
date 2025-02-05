@@ -17,8 +17,7 @@ file(GLOB XMCU_SRC "${CMAKE_CURRENT_LIST_DIR}/xmcu/*.cpp"
                    "${CMAKE_CURRENT_LIST_DIR}/xmcu/hal/*.h")
 
 if (XMCU_SOC_MODEL STREQUAL XMCU_SOC_MODEL_STM32WB35CEU6A)
-
-    file(GLOB XMCU_SRC ${XMCU_SRC} "${CMAKE_CURRENT_LIST_DIR}/soc/ST/arm/Systick.cpp")
+    file(GLOB XMCU_SRC ${XMCU_SRC} "${CMAKE_CURRENT_LIST_DIR}/soc/ST/arm/Systick.cpp" "${CMAKE_CURRENT_LIST_DIR}/soc/ST/arm/Systick.hpp")
 
     add_library(XMCU OBJECT ${XMCU_SRC})
     include_directories(XMCU PUBLIC "${CMAKE_CURRENT_LIST_DIR}")
@@ -33,8 +32,22 @@ if (XMCU_SOC_MODEL STREQUAL XMCU_SOC_MODEL_STM32WB35CEU6A)
         message("No submodule found!")
     endif()
 elseif(XMCU_SOC_MODEL STREQUAL XMCU_SOC_MODEL_STM32L010F4P6)
+    file(GLOB XMCU_SRC ${XMCU_SRC} "${CMAKE_CURRENT_LIST_DIR}/soc/ST/arm/Systick.cpp" "${CMAKE_CURRENT_LIST_DIR}/soc/ST/arm/Systick.hpp")
 
-    file(GLOB XMCU_SRC ${XMCU_SRC} "${CMAKE_CURRENT_LIST_DIR}/soc/ST/arm/Systick.cpp")
+    add_library(XMCU OBJECT ${XMCU_SRC})
+    include_directories(XMCU PUBLIC "${CMAKE_CURRENT_LIST_DIR}")
+
+    set(XMCU_PATH ${CMAKE_CURRENT_LIST_DIR})
+
+    set(XMCU_SOC_CMAKE_FILE "${CMAKE_CURRENT_LIST_DIR}/soc/ST/arm/m0/l0/CMakeLists.txt")
+
+    if(EXISTS ${XMCU_SOC_CMAKE_FILE})
+        include(${XMCU_SOC_CMAKE_FILE})
+    else()
+        message("No submodule found!")
+    endif()
+elseif(XMCU_SOC_MODEL STREQUAL XMCU_SOC_MODEL_STM32L010C6T6)
+    file(GLOB XMCU_SRC ${XMCU_SRC} "${CMAKE_CURRENT_LIST_DIR}/soc/ST/arm/Systick.cpp" "${CMAKE_CURRENT_LIST_DIR}/soc/ST/arm/Systick.hpp")
 
     add_library(XMCU OBJECT ${XMCU_SRC})
     include_directories(XMCU PUBLIC "${CMAKE_CURRENT_LIST_DIR}")
