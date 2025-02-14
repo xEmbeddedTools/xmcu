@@ -48,12 +48,14 @@ public:
     class flag : private non_constructible
     {
     public:
-        template<typename Register_t, typename Flag_t> constexpr static bool is(Register_t a_register, Flag_t a_flag)
+        template<typename Register_t, typename Flag_t>
+        [[nodiscard]] constexpr static bool is(Register_t a_register, Flag_t a_flag)
         {
             return a_flag == (a_register & a_flag);
         }
 
-        template<typename Register_t, typename Mask_t> constexpr static Mask_t get(Register_t a_register, Mask_t a_mask)
+        template<typename Register_t, typename Mask_t>
+        [[nodiscard]] constexpr static Mask_t get(Register_t a_register, Mask_t a_mask)
         {
             return (a_register & a_mask);
         }
