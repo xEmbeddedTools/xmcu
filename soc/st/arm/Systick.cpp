@@ -5,14 +5,14 @@
 
 // this
 #include <xmcu/config.hpp>
-#include <soc/ST/arm/Systick.hpp>
+#include <soc/st/arm/Systick.hpp>
 
 // xmcu
 #include <soc/Scoped_guard.hpp>
 #if defined(XMCU_SOC_CORE_FAMILY_M0)
-#include <soc/ST/arm/m0/nvic.hpp>
+#include <soc/st/arm/m0/nvic.hpp>
 #elif defined(XMCU_SOC_CORE_FAMILY_M4)
-#include <soc/ST/arm/m4/nvic.hpp>
+#include <soc/st/arm/m4/nvic.hpp>
 #endif
 
 // debug

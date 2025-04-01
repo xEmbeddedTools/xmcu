@@ -10,7 +10,7 @@
 #include <stm32l0xx.h>
 
 // xmcu
-#include <soc/ST/arm/m0/l0/rm0451/config.hpp>
+#include <soc/st/arm/m0/l0/rm0451/config.hpp>
 #endif
 
 #if defined(XMCU_SOC_MODEL_STM32WB35CEU6A)
@@ -18,7 +18,7 @@
 #include <stm32wbxx.h>
 
 // xmcu
-#include <soc/ST/arm/m4/wb/rm0434/config.hpp>
+#include <soc/st/arm/m4/wb/rm0434/config.hpp>
 #endif
 
 #define DECORATE_INCLUDE_PATH(x) <x>

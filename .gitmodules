@@ -1,8 +1,6 @@
-[submodule "soc/ST/arm/m0/l0"]
-	path = soc/ST/arm/m0/l0
+[submodule "soc/st/arm/m0/l0"]
+	path = soc/st/arm/m0/l0
 	url = https://github.com/xEmbeddedTools/xsoc_stm32l0.git
-	branch = main
-[submodule "soc/ST/arm/m4/wb"]
-	path = soc/ST/arm/m4/wb
+[submodule "soc/st/arm/m4/wb"]
+	path = soc/st/arm/m4/wb
 	url = https://github.com/xEmbeddedTools/xsoc_stm32wb.git
-	branch = main
