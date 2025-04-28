@@ -16,7 +16,7 @@
 #if defined(XMCU_SOC_MODEL_STM32WB35CEU6A)
 #include <stm32wbxx.h>
 #define ASSERTION_TRAP_ENTER_ENABLED
-#elif defined(STM32L0)
+#elif defined(XMCU_SOC_MODEL_STM32L010F4P6)
 #include <stm32l0xx.h>
 #define ASSERTION_TRAP_ENTER_ENABLED
 #endif
@@ -28,7 +28,11 @@ class assertion : private non_constructible
 {
 public:
 #if defined(ASSERTION_TRAP_ENTER_ENABLED)
-    enum class Trap_enter_mode : std::uint32_t { disabled, enabled };
+    enum class Trap_enter_mode : std::uint32_t
+    {
+        disabled,
+        enabled
+    };
 #endif
     struct Halt_hadler
     {
