@@ -20,4 +20,12 @@ using LPUART = xmcu::soc::XMCU_SOC_VENDOR::XMCU_SOC_ARCHITECTURE::XMCU_SOC_CORE_
     XMCU_SOC_VENDOR_FAMILY_RM::peripherals::LPUART;
 using USART = xmcu::soc::XMCU_SOC_VENDOR::XMCU_SOC_ARCHITECTURE::XMCU_SOC_CORE_FAMILY::XMCU_SOC_VENDOR_FAMILY::
     XMCU_SOC_VENDOR_FAMILY_RM::peripherals::USART;
+
+#if defined(XMCU_LL_ONLY)
+inline
+#endif
+    namespace ll {
+using usart = xmcu::soc::XMCU_SOC_VENDOR::XMCU_SOC_ARCHITECTURE::XMCU_SOC_CORE_FAMILY::XMCU_SOC_VENDOR_FAMILY::
+    XMCU_SOC_VENDOR_FAMILY_RM::peripherals::ll::usart;
+} // namespace ll
 } // namespace xmcu::hal::peripherals
