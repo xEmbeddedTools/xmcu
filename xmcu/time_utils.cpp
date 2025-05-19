@@ -9,7 +9,7 @@
 #include <xmcu/assertion.hpp>
 
 namespace xmcu {
-std::uint64_t time_utils::to_unix_epoch(const Timestamp& a_timestamp)
+Seconds time_utils::to_unix_epoch(const Timestamp& a_timestamp)
 {
     constexpr std::uint32_t min_to_sec = 60u;
     constexpr std::uint32_t hour_to_sec = 60u * 60u;
@@ -36,11 +36,11 @@ std::uint64_t time_utils::to_unix_epoch(const Timestamp& a_timestamp)
     return epoch;
 }
 
-time_utils::Timestamp time_utils::from_unix_epoch(std::uint64_t a_epoch)
+time_utils::Timestamp time_utils::from_unix_epoch(Seconds a_epoch)
 {
     Timestamp ret;
 
-    std::uint64_t temp_timestamp = a_epoch;
+    volatile std::uint64_t temp_timestamp = a_epoch.get();
     std::uint32_t year = 1970u;
 
     if (temp_timestamp > 18934214400u)
@@ -66,20 +66,21 @@ time_utils::Timestamp time_utils::from_unix_epoch(std::uint64_t a_epoch)
     ret.time.hour = temp_timestamp % 24;
     temp_timestamp /= 24u;
 
-    for (; temp_timestamp >= 365u; temp_timestamp -= 365u)
+    for (; temp_timestamp >= 365u;)
     {
         if (true == is_leap_year(year))
         {
-            --temp_timestamp;
+            temp_timestamp = temp_timestamp - 1u;
         }
         ++year;
+        temp_timestamp = temp_timestamp - 365u;
     }
 
     bool leap_year = is_leap_year(year);
 
     uint8_t months_days[12] = { 31, static_cast<uint8_t>(leap_year ? 29 : 28), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
-    ++temp_timestamp; // to count days from 1 insted of 0
+    temp_timestamp = temp_timestamp + 1u; // to count days from 1 insted of 0
     uint8_t i = 0;
     for (; months_days[i] < temp_timestamp; ++i)
     {

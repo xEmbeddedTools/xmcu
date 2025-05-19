@@ -160,6 +160,11 @@ template<> template<> inline Milliseconds Seconds::get_in() const
     return this->v * 1000u;
 }
 
+template<> template<> inline Seconds Milliseconds::get_in() const
+{
+    return this->v / 1000u;
+}
+
 inline Microseconds operator-(Microseconds a_lhs, Microseconds a_rhs)
 {
     hkm_assert(a_lhs.get() >= a_rhs.get());

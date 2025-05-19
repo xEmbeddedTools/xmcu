@@ -6,8 +6,8 @@
 
 // xmcu
 #include <xmcu/Duration.hpp>
-#include <xmcu/non_constructible.hpp>
 #include <xmcu/Not_null.hpp>
+#include <xmcu/non_constructible.hpp>
 
 namespace xmcu {
 struct time_utils : private non_constructible
@@ -32,8 +32,8 @@ struct time_utils : private non_constructible
         Date date;
     };
 
-    static std::uint64_t to_unix_epoch(const Timestamp& a_timestamp);
-    static Timestamp from_unix_epoch(std::uint64_t a_epoch);
+    static Seconds to_unix_epoch(const Timestamp& a_timestamp);
+    static Timestamp from_unix_epoch(xmcu::Seconds a_epoch);
     static bool from_cstring(Not_null<Timestamp*> a_p_out,
                              std::string_view a_string); // format: Tue Jun 13 09:55:40 2023
     static bool is_leap_year(std::uint32_t a_year);
