@@ -265,15 +265,18 @@ inline Seconds operator*(Seconds::Value_type a_lhs, Seconds a_rhs)
 }
 } // namespace xmcu
 
-constexpr inline xmcu::Microseconds operator"" _us(std::uint64_t a_value)
+static_assert(sizeof(unsigned long long) == sizeof(std::uint64_t),
+    "unsigned long long must be 64 bits");
+
+constexpr inline xmcu::Microseconds operator"" _us(unsigned long long a_value)
 {
     return { a_value };
 }
-constexpr inline xmcu::Milliseconds operator"" _ms(std::uint64_t a_value)
+constexpr inline xmcu::Milliseconds operator"" _ms(unsigned long long a_value)
 {
     return { a_value };
 }
-constexpr inline xmcu::Seconds operator"" _s(std::uint64_t a_value)
+constexpr inline xmcu::Seconds operator"" _s(unsigned long long a_value)
 {
     return { a_value };
 }
