@@ -141,17 +141,22 @@ public:
         return this->v;
     }
 
-    template<typename Ret_type_t> Ret_type_t get_in() const = delete;
-
     template<typename T>
         requires requires { // TODO save as concept OR NOT
             typename T::Value_type;
             T::factor;
-            factor <= T::factor;
+            typename std::enable_if_t<(T::factor <= factor) || T::factor == 1000000u, bool>;
         }
     constexpr inline T get_in() const
     {
-        return this->v * factor / T::factor;
+        if constexpr (auto constexpr ratio = factor / T::factor)
+        {
+            return this->v * (ratio);
+        }
+        else // for round down special case to convert to seconds
+        {
+            return this->v * factor / T::factor;
+        }
     }
 
 private:
