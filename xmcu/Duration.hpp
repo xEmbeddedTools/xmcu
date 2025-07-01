@@ -28,7 +28,6 @@ public:
     template<Value_t rhs_factor, std::enable_if_t<(factor_t < rhs_factor), bool> = true>
     constexpr Duration(const Duration<Value_t, rhs_factor>& a_v)
         : Duration(a_v.template get_in<Duration<Value_type, factor>>())
-    // v(a_v.get() * rhs_factor / factor_t)
     {
     }
     template<Value_t rhs_factor, std::enable_if_t<(factor_t < rhs_factor), bool> = true>
