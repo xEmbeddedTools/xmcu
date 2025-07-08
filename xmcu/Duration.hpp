@@ -27,12 +27,12 @@ public:
     }
     template<Value_t rhs_factor, std::enable_if_t<(factor_t < rhs_factor), bool> = true>
     constexpr Duration(const Duration<Value_t, rhs_factor>& a_v)
-        : v(a_v.get() * rhs_factor)
+        : Duration(a_v.template get_in<Duration<Value_type, factor>>())
     {
     }
     template<Value_t rhs_factor, std::enable_if_t<(factor_t < rhs_factor), bool> = true>
     explicit constexpr Duration(Duration<Value_t, rhs_factor>&& a_v)
-        : v(a_v.get() * rhs_factor)
+        : Duration(a_v.template get_in<Duration<Value_type, factor>>())
     {
     }
 
@@ -140,7 +140,20 @@ public:
         return this->v;
     }
 
-    template<typename Ret_type_t> Ret_type_t get_in() const = delete;
+    template<typename T,
+             std::enable_if_t<std::is_same_v<Value_t, typename T::Value_type>, Value_t> ratio = factor / T::factor,
+             std::enable_if_t<(T::factor <= factor) || T::factor == 1000000u, bool> = true>
+    constexpr T get_in() const
+    {
+        if constexpr (ratio)
+        {
+            return this->v * (ratio);
+        }
+        else // for round down special case to convert to seconds
+        {
+            return this->v * factor / T::factor;
+        }
+    }
 
 private:
     Value_t v = static_cast<Value_t>(0);
@@ -150,116 +163,101 @@ using Microseconds = Duration<std::uint64_t, 1u>;
 using Milliseconds = Duration<std::uint64_t, 1000u>;
 using Seconds = Duration<std::uint64_t, 1000000u>;
 
-template<> template<> inline Microseconds Milliseconds::get_in() const
-{
-    return this->v * 1000u;
-}
-
-template<> template<> inline Milliseconds Seconds::get_in() const
-{
-    return this->v * 1000u;
-}
-
-template<> template<> inline Seconds Milliseconds::get_in() const
-{
-    return this->v / 1000u;
-}
-
-inline Microseconds operator-(Microseconds a_lhs, Microseconds a_rhs)
+constexpr inline Microseconds operator-(Microseconds a_lhs, Microseconds a_rhs)
 {
     hkm_assert(a_lhs.get() >= a_rhs.get());
 
     return { a_lhs.get() - a_rhs.get() };
 }
-inline Microseconds operator-(Microseconds a_lhs, Milliseconds a_rhs)
+constexpr inline Microseconds operator-(Microseconds a_lhs, Milliseconds a_rhs)
 {
     hkm_assert(a_lhs.get() >= a_rhs.get_in<Microseconds>().get());
 
     return { a_lhs - a_rhs.get_in<Microseconds>() };
 }
-inline Microseconds operator-(Milliseconds a_lhs, Microseconds a_rhs)
+constexpr inline Microseconds operator-(Milliseconds a_lhs, Microseconds a_rhs)
 {
     hkm_assert(a_lhs.get_in<Microseconds>().get() >= a_rhs.get());
 
     return { a_lhs.get_in<Microseconds>() - a_rhs };
 }
-inline Milliseconds operator-(Milliseconds a_lhs, Milliseconds a_rhs)
+constexpr inline Milliseconds operator-(Milliseconds a_lhs, Milliseconds a_rhs)
 {
     hkm_assert(a_lhs.get() >= a_rhs.get());
 
     return { a_lhs.get() - a_rhs.get() };
 }
-inline Milliseconds operator-(Seconds a_lhs, Milliseconds a_rhs)
+constexpr inline Milliseconds operator-(Seconds a_lhs, Milliseconds a_rhs)
 {
     hkm_assert(a_lhs.get_in<xmcu::Milliseconds>().get() >= a_rhs.get());
 
     return { a_lhs.get_in<xmcu::Milliseconds>() - a_rhs };
 }
-inline Milliseconds operator-(Milliseconds a_lhs, Seconds a_rhs)
+constexpr inline Milliseconds operator-(Milliseconds a_lhs, Seconds a_rhs)
 {
     hkm_assert(a_lhs.get() >= a_rhs.get_in<xmcu::Milliseconds>().get());
 
     return { a_lhs - a_rhs.get_in<xmcu::Milliseconds>() };
 }
-inline Seconds operator-(Seconds a_lhs, Seconds a_rhs)
+constexpr inline Seconds operator-(Seconds a_lhs, Seconds a_rhs)
 {
     hkm_assert(a_lhs.get() >= a_rhs.get());
 
     return { a_lhs.get() - a_rhs.get() };
 }
 
-inline Microseconds operator+(Microseconds a_lhs, Microseconds a_rhs)
+constexpr inline Microseconds operator+(Microseconds a_lhs, Microseconds a_rhs)
 {
     return { a_lhs.get() + a_rhs.get() };
 }
-inline Microseconds operator+(Microseconds a_lhs, Milliseconds a_rhs)
+constexpr inline Microseconds operator+(Microseconds a_lhs, Milliseconds a_rhs)
 {
     return { a_lhs + a_rhs.get_in<Microseconds>() };
 }
-inline Microseconds operator+(Milliseconds a_lhs, Microseconds a_rhs)
+constexpr inline Microseconds operator+(Milliseconds a_lhs, Microseconds a_rhs)
 {
     return { a_lhs.get_in<Microseconds>() + a_rhs };
 }
-inline Milliseconds operator+(Milliseconds a_lhs, Milliseconds a_rhs)
+constexpr inline Milliseconds operator+(Milliseconds a_lhs, Milliseconds a_rhs)
 {
     return { a_lhs.get() + a_rhs.get() };
 }
-inline Milliseconds operator+(Seconds a_lhs, Milliseconds a_rhs)
+constexpr inline Milliseconds operator+(Seconds a_lhs, Milliseconds a_rhs)
 {
     return { a_lhs.get_in<xmcu::Milliseconds>() + a_rhs };
 }
-inline Milliseconds operator+(Milliseconds a_lhs, Seconds a_rhs)
+constexpr inline Milliseconds operator+(Milliseconds a_lhs, Seconds a_rhs)
 {
     return { a_lhs + a_rhs.get_in<xmcu::Milliseconds>() };
 }
-inline Seconds operator+(Seconds a_lhs, Seconds a_rhs)
+constexpr inline Seconds operator+(Seconds a_lhs, Seconds a_rhs)
 {
     return { a_lhs.get() + a_rhs.get() };
 }
 
-inline Microseconds operator*(Microseconds a_lhs, Microseconds::Value_type a_rhs)
+constexpr inline Microseconds operator*(Microseconds a_lhs, Microseconds::Value_type a_rhs)
 {
     return { a_lhs.get() * a_rhs };
 }
-inline Microseconds operator*(Microseconds::Value_type a_lhs, Microseconds a_rhs)
+constexpr inline Microseconds operator*(Microseconds::Value_type a_lhs, Microseconds a_rhs)
 {
     return { a_lhs * a_rhs.get() };
 }
 
-inline Milliseconds operator*(Milliseconds a_lhs, Milliseconds::Value_type a_rhs)
+constexpr inline Milliseconds operator*(Milliseconds a_lhs, Milliseconds::Value_type a_rhs)
 {
     return { a_lhs.get() * a_rhs };
 }
-inline Milliseconds operator*(Milliseconds::Value_type a_lhs, Milliseconds a_rhs)
+constexpr inline Milliseconds operator*(Milliseconds::Value_type a_lhs, Milliseconds a_rhs)
 {
     return { a_lhs * a_rhs.get() };
 }
 
-inline Seconds operator*(Seconds a_lhs, Seconds::Value_type a_rhs)
+constexpr inline Seconds operator*(Seconds a_lhs, Seconds::Value_type a_rhs)
 {
     return { a_lhs.get() * a_rhs };
 }
-inline Seconds operator*(Seconds::Value_type a_lhs, Seconds a_rhs)
+constexpr inline Seconds operator*(Seconds::Value_type a_lhs, Seconds a_rhs)
 {
     return { a_lhs * a_rhs.get() };
 }
