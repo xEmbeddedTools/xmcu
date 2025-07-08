@@ -140,15 +140,12 @@ public:
         return this->v;
     }
 
-    template<typename T>
-        requires requires { // TODO save as concept OR NOT
-            typename T::Value_type;
-            T::factor;
-            typename std::enable_if_t<(T::factor <= factor) || T::factor == 1000000u, bool>;
-        }
-    constexpr inline T get_in() const
+    template<typename T,
+             std::enable_if_t<std::is_same_v<Value_t, typename T::Value_type>, Value_t> ratio = factor / T::factor,
+             std::enable_if_t<(T::factor <= factor) || T::factor == 1000000u, bool> = true>
+    constexpr T get_in() const
     {
-        if constexpr (auto constexpr ratio = factor / T::factor)
+        if constexpr (ratio)
         {
             return this->v * (ratio);
         }
