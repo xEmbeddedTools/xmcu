@@ -15,10 +15,10 @@
 #pragma GCC diagnostic ignored "-Wvolatile"
 #if defined(XMCU_SOC_MODEL_STM32WB35CEU6A)
 #include <stm32wbxx.h>
-#define ASSERTION_TRAP_ENTER_ENABLED
+#define XMCU_ASSERTION_TRAP_ENTER_ENABLED
 #elif defined(XMCU_SOC_MODEL_STM32L010F4P6) || defined(XMCU_SOC_MODEL_STM32L010C6T6)
 #include <stm32l0xx.h>
-#define ASSERTION_TRAP_ENTER_ENABLED
+#define XMCU_ASSERTION_TRAP_ENTER_ENABLED
 #endif
 #pragma GCC diagnostic pop
 
@@ -27,7 +27,7 @@ namespace debug {
 class assertion : private non_constructible
 {
 public:
-#if defined(ASSERTION_TRAP_ENTER_ENABLED)
+#if defined(XMCU_ASSERTION_TRAP_ENTER_ENABLED)
     enum class Trap_enter_mode : std::uint32_t
     {
         disabled,
@@ -54,7 +54,7 @@ public:
     };
 
     static void enable(const Halt_hadler& a_halt
-#if defined(ASSERTION_TRAP_ENTER_ENABLED)
+#if defined(XMCU_ASSERTION_TRAP_ENTER_ENABLED)
                        ,
                        Trap_enter_mode a_trap_enter_mode
 #endif
@@ -63,10 +63,19 @@ public:
 
     static void register_print(const Print_handler& a_print);
 
+#ifdef  XMCU_DISABLE_PRINTING_MESSAGE_ON_ASSERTION_FAIL
+    static void print([[maybe_unused]] const char* a_p_file,
+                      [[maybe_unused]] uint32_t a_line,
+                      [[maybe_unused]] const char* a_p_expression)
+    {
+        return;
+    }
+#else
     static void print(const char* a_p_file, uint32_t a_line, const char* a_p_expression);
+#endif
     static void halt();
 
-#if defined(ASSERTION_TRAP_ENTER_ENABLED)
+#if defined(XMCU_ASSERTION_TRAP_ENTER_ENABLED)
     static Trap_enter_mode get_Trap_enter_mode();
 #endif
 };
@@ -74,8 +83,8 @@ public:
 } // namespace debug
 } // namespace xmcu
 
-#if defined(HKM_ASSERT_ENABLED)
-#if defined(ASSERTION_TRAP_ENTER_ENABLED)
+#if defined(XMCU_ASSERT_ENABLED)
+#if defined(XMCU_ASSERTION_TRAP_ENTER_ENABLED)
 #define hkm_assert(expression)                                                                     \
     do                                                                                             \
     {                                                                                              \
