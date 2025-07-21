@@ -37,7 +37,9 @@ void assertion::disable()
     print_handler = { nullptr, nullptr };
 }
 
-void assertion::register_print(const Print_handler& a_print) {}
+void assertion::register_print(const Print_handler& a_print) {
+    print_handler = a_print;
+}
 
 void assertion::print(const char* a_p_file, uint32_t a_line, const char* a_p_expression)
 {
