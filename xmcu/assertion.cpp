@@ -11,7 +11,7 @@ using namespace xmcu::debug;
 
 assertion::Halt_hadler halt_handler;
 assertion::Print_handler print_handler;
-#if defined(ASSERTION_TRAP_ENTER_ENABLED)
+#if defined(XMCU_ASSERTION_TRAP_ENTER_ENABLED)
 assertion::Trap_enter_mode trap_enter_mode;
 #endif
 } // namespace
@@ -19,14 +19,14 @@ assertion::Trap_enter_mode trap_enter_mode;
 namespace xmcu {
 namespace debug {
 void assertion::enable(const Halt_hadler& a_halt
-#if defined(ASSERTION_TRAP_ENTER_ENABLED)
+#if defined(XMCU_ASSERTION_TRAP_ENTER_ENABLED)
                        ,
                        Trap_enter_mode a_trap_enter_mode
 #endif
 )
 {
     halt_handler = a_halt;
-#if defined(ASSERTION_TRAP_ENTER_ENABLED)
+#if defined(XMCU_ASSERTION_TRAP_ENTER_ENABLED)
     trap_enter_mode = a_trap_enter_mode;
 #endif
 }
@@ -41,6 +41,7 @@ void assertion::register_print(const Print_handler& a_print) {
     print_handler = a_print;
 }
 
+#if !defined(XMCU_DISABLE_PRINTING_MESSAGE_ON_ASSERTION_FAIL)
 void assertion::print(const char* a_p_file, uint32_t a_line, const char* a_p_expression)
 {
     if (nullptr != print_handler.p_function)
@@ -48,6 +49,7 @@ void assertion::print(const char* a_p_file, uint32_t a_line, const char* a_p_exp
         print_handler.p_function(a_p_file, a_line, a_p_expression, print_handler.p_user_data);
     }
 }
+#endif
 
 void assertion::halt()
 {
@@ -57,7 +59,7 @@ void assertion::halt()
     }
 }
 
-#if defined(ASSERTION_TRAP_ENTER_ENABLED)
+#if defined(XMCU_ASSERTION_TRAP_ENTER_ENABLED)
 assertion::Trap_enter_mode assertion::get_Trap_enter_mode()
 {
     return trap_enter_mode;
