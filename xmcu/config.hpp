@@ -13,7 +13,7 @@
 #include <soc/st/arm/m0/l0/rm0451/config.hpp>
 #endif
 
-#if defined(XMCU_SOC_MODEL_STM32WB35CEU6A)
+#if defined(XMCU_SOC_MODEL_STM32WB35CEU6A) || defined(XMCU_SOC_MODEL_STM32WB55CGU6)
 //CMSIS
 #include <stm32wbxx.h>
 
