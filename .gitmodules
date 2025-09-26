@@ -4,3 +4,6 @@
 [submodule "soc/st/arm/m4/wb"]
 	path = soc/st/arm/m4/wb
 	url = https://github.com/xEmbeddedTools/xsoc_stm32wb.git
+[submodule "soc/st/arm/m0/u0"]
+	path = soc/st/arm/m0/u0
+	url = https://github.com/xEmbeddedTools/xsoc_stm32u0.git
