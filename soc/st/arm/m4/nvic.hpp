@@ -9,7 +9,7 @@
 #include <cstdint>
 
 // externals
-#include <stm32wbxx.h>
+#include <core_cm4.h>
 
 // xmcu
 #include <soc/Scoped_guard.hpp>
