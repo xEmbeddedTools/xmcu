@@ -11,8 +11,8 @@
 #include <utility>
 
 // xmcu
-#include <soc/st/arm/IRQ_config.hpp>
 #include <soc/peripheral.hpp>
+#include <soc/st/arm/IRQ_config.hpp>
 #include <xmcu/Non_copyable.hpp>
 #include <xmcu/bit.hpp>
 #include <xmcu/config.hpp>
