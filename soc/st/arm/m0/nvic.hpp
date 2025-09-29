@@ -6,7 +6,7 @@
  */
 
 // externals
-#include <stm32l0xx.h>
+#include <core_cm0plus.h>
 
 // xmcu
 #include <xmcu/Non_copyable.hpp>
