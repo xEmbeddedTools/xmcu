@@ -27,8 +27,8 @@ else()
 endif()
 
 add_library(XMCU OBJECT ${XMCU_SRC})
-target_compile_features(XMCU PUBLIC cxx_std_23)
-target_compile_features(XMCU PUBLIC c_std_11)
+target_compile_features(XMCU PRIVATE cxx_std_23)
+target_compile_features(XMCU PRIVATE c_std_11)
 
 target_include_directories(XMCU PUBLIC "${CMAKE_CURRENT_LIST_DIR}")
 
