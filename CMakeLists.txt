@@ -3,7 +3,7 @@
 # Licensed under the Apache License, Version 2.0. See LICENSE file in the project root for details.
 #
 
-cmake_minimum_required(VERSION 3.19.0)
+cmake_minimum_required(VERSION 3.20.0)
 
 file(GLOB XMCU_SRC "${CMAKE_CURRENT_LIST_DIR}/xmcu/*.cpp"
                    "${CMAKE_CURRENT_LIST_DIR}/xmcu/*.c"
