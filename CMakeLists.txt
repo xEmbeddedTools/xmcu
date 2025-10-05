@@ -4,8 +4,6 @@
 #
 
 cmake_minimum_required(VERSION 3.19.0)
-set(CMAKE_CXX_STANDARD 23)
-set(CMAKE_C_STANDARD 11)
 
 file(GLOB XMCU_SRC "${CMAKE_CURRENT_LIST_DIR}/xmcu/*.cpp"
                    "${CMAKE_CURRENT_LIST_DIR}/xmcu/*.c"
@@ -14,31 +12,28 @@ file(GLOB XMCU_SRC "${CMAKE_CURRENT_LIST_DIR}/xmcu/*.cpp"
                    "${CMAKE_CURRENT_LIST_DIR}/xmcu/hal/*.cpp"
                    "${CMAKE_CURRENT_LIST_DIR}/xmcu/hal/*.c"
                    "${CMAKE_CURRENT_LIST_DIR}/xmcu/hal/*.hpp"
-                   "${CMAKE_CURRENT_LIST_DIR}/xmcu/hal/*.h")
+                   "${CMAKE_CURRENT_LIST_DIR}/xmcu/hal/*.h" 
+                   "${CMAKE_CURRENT_LIST_DIR}/soc/st/arm/Systick.cpp" 
+                   "${CMAKE_CURRENT_LIST_DIR}/soc/st/arm/Systick.hpp")
 
-if(XMCU_SOC_MODEL STREQUAL XMCU_SOC_MODEL_STM32WB35CEU6A OR
-   XMCU_SOC_MODEL STREQUAL XMCU_SOC_MODEL_STM32WB55CGU6)
-    set(XMCU_SOC_CMAKE_FILE "${CMAKE_CURRENT_LIST_DIR}/soc/st/arm/m4/wb/CMakeLists.txt")
-elseif(XMCU_SOC_MODEL STREQUAL XMCU_SOC_MODEL_STM32L010F4P6 OR
-       XMCU_SOC_MODEL STREQUAL XMCU_SOC_MODEL_STM32L010C6T6)
-    set(XMCU_SOC_CMAKE_FILE "${CMAKE_CURRENT_LIST_DIR}/soc/st/arm/m0/l0/CMakeLists.txt")
+set(XMCU_PATH ${CMAKE_CURRENT_LIST_DIR})
+
+if(XMCU_SOC_MODEL STREQUAL XMCU_SOC_MODEL_STM32WB35CEU6A OR XMCU_SOC_MODEL STREQUAL XMCU_SOC_MODEL_STM32WB55CGU6)
+    set(XMCU_SOC_PATH "${CMAKE_CURRENT_LIST_DIR}/soc/st/arm/m4/wb/")
+elseif(XMCU_SOC_MODEL STREQUAL XMCU_SOC_MODEL_STM32L010F4P6 OR XMCU_SOC_MODEL STREQUAL XMCU_SOC_MODEL_STM32L010C6T6)
+    set(XMCU_SOC_PATH "${CMAKE_CURRENT_LIST_DIR}/soc/st/arm/m0/l0/")
 else()
     message(FATAL_ERROR "Unsupported SOC model")
 endif()
 
-file(GLOB XMCU_SRC ${XMCU_SRC} "${CMAKE_CURRENT_LIST_DIR}/soc/st/arm/Systick.cpp" "${CMAKE_CURRENT_LIST_DIR}/soc/st/arm/Systick.hpp")
-
 add_library(XMCU OBJECT ${XMCU_SRC})
-include_directories("${CMAKE_CURRENT_LIST_DIR}")
+target_compile_features(XMCU PUBLIC cxx_std_23)
+target_compile_features(XMCU PUBLIC c_std_11)
 
-set(XMCU_PATH ${CMAKE_CURRENT_LIST_DIR})
+target_include_directories(XMCU PUBLIC "${CMAKE_CURRENT_LIST_DIR}")
 
-message("XMCU_SOC_CMAKE_FILE: ${XMCU_SOC_CMAKE_FILE}")
-if(EXISTS ${XMCU_SOC_CMAKE_FILE})
-    include(${XMCU_SOC_CMAKE_FILE})
-else()
-    message(FATAL_ERROR "No submodule found!")
-endif()
+add_subdirectory(${XMCU_SOC_PATH} ${CMAKE_BINARY_DIR}/${XMCU_SOC_MODEL})
+target_link_libraries(XMCU PRIVATE XMCU_SOC)
 
 message("XMCU: Selected configuration: ${XMCU_SOC_MODEL}")
-
+set(XMCU_SOC_PATH ${XMCU_SOC_PATH} PARENT_SCOPE)
