@@ -14,13 +14,6 @@
 #endif
 
 namespace xmcu::hal::peripherals {
-
-    // TODO make decision if we need some kind of selector
-    // most important is use in interrupt so, cannot be marked as unused in linking.
 using wwdg = xmcu::soc::XMCU_SOC_VENDOR::XMCU_SOC_ARCHITECTURE::XMCU_SOC_CORE_FAMILY::XMCU_SOC_VENDOR_FAMILY::
     XMCU_SOC_VENDOR_FAMILY_RM::peripherals::wwdg;
-using wwdg_repetable = xmcu::soc::XMCU_SOC_VENDOR::XMCU_SOC_ARCHITECTURE::XMCU_SOC_CORE_FAMILY::XMCU_SOC_VENDOR_FAMILY::
-    XMCU_SOC_VENDOR_FAMILY_RM::peripherals::wwdg_repetable;
-} // namespace xmcu::hal::peripherals#pragma once
-
-
+} // namespace xmcu::hal::peripherals
