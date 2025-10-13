@@ -32,7 +32,7 @@ target_compile_features(XMCU PRIVATE c_std_11)
 
 target_include_directories(XMCU PUBLIC "${CMAKE_CURRENT_LIST_DIR}")
 
-add_subdirectory(${XMCU_SOC_PATH} ${CMAKE_BINARY_DIR}/${XMCU_SOC_MODEL})
+add_subdirectory(${XMCU_SOC_PATH})
 target_link_libraries(XMCU PRIVATE XMCU_SOC)
 
 message("XMCU: Selected configuration: ${XMCU_SOC_MODEL}")
