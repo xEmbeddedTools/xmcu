@@ -36,4 +36,3 @@ add_subdirectory(${XMCU_SOC_PATH})
 target_link_libraries(XMCU PRIVATE XMCU_SOC)
 
 message("XMCU: Selected configuration: ${XMCU_SOC_MODEL}")
-set(XMCU_SOC_PATH ${XMCU_SOC_PATH} PARENT_SCOPE)
