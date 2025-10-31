@@ -6,18 +6,11 @@
  */
 
 // xmcu
-#if defined(STM32WB) || defined(STM32L0)
 #include <soc/peripheral.hpp>
-#endif
 
 namespace xmcu {
 namespace hal {
-#if defined(STM32WB) || defined(STM32L0)
-template<typename Perihperal_t,
-         std::uint32_t perihperal_id = std::numeric_limits<std::uint32_t>::max(),
-         typename DMA_t = void*,
-         std::uint32_t DMA_id = std::numeric_limits<std::uint32_t>::max()>
-using peripheral = xmcu::soc::peripheral<Perihperal_t, perihperal_id, DMA_t, DMA_id>;
-#endif
+template<typename Perihperal_t, typename Perihperal_id_t = void, typename DMA_t = void, typename DMA_id_t = void>
+using peripheral = xmcu::soc::peripheral<Perihperal_t, Perihperal_id_t, DMA_t, DMA_id_t>;
 } // namespace hal
 } // namespace xmcu

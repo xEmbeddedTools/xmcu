@@ -17,7 +17,6 @@
 // clang-format on
 
 namespace xmcu::hal {
-template<typename Perihperal_t, std::size_t id_t = std::numeric_limits<std::size_t>::max()> using rcc =
-    xmcu::soc::XMCU_SOC_VENDOR::XMCU_SOC_ARCHITECTURE::XMCU_SOC_CORE_FAMILY::XMCU_SOC_VENDOR_FAMILY::
-        XMCU_SOC_VENDOR_FAMILY_RM::rcc<Perihperal_t, id_t>;
+template<typename Perihperal_t, typename Id = void> using rcc = xmcu::soc::XMCU_SOC_VENDOR::XMCU_SOC_ARCHITECTURE::
+    XMCU_SOC_CORE_FAMILY::XMCU_SOC_VENDOR_FAMILY::XMCU_SOC_VENDOR_FAMILY_RM::rcc<Perihperal_t, Id>;
 } // namespace xmcu::hal
