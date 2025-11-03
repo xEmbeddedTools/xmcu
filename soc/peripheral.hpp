@@ -15,10 +15,7 @@
 
 namespace xmcu {
 namespace soc {
-template<typename Perihperal_t,
-         std::uint32_t perihperal_id_t = std::numeric_limits<std::uint32_t>::max(),
-         typename DMA_t                = void*,
-         std::uint32_t DMA_id_t        = std::numeric_limits<std::uint32_t>::max()>
+template<typename Perihperal_t, typename Perihperal_id_t = void, typename DMA_t = void, typename DMA_id_t = void>
 class peripheral : private xmcu::non_constructible
 {
 };
