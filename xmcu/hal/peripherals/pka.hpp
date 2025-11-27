@@ -8,14 +8,12 @@
 // xmcu
 #include <xmcu/config.hpp>
 
-
 // clang-format off
 // soc
 #if defined(STM32WB)
 #include DECORATE_INCLUDE_PATH(soc/XMCU_SOC_VENDOR/XMCU_SOC_ARCHITECTURE/XMCU_SOC_CORE_FAMILY/XMCU_SOC_VENDOR_FAMILY/XMCU_SOC_VENDOR_FAMILY_RM/peripherals/pka/pka.hpp)
 #endif
 // clang-format on
-
 
 namespace xmcu::hal::peripherals {
 using pka = xmcu::soc::XMCU_SOC_VENDOR::XMCU_SOC_ARCHITECTURE::XMCU_SOC_CORE_FAMILY::XMCU_SOC_VENDOR_FAMILY::
