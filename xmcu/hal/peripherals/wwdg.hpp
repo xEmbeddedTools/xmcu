@@ -8,12 +8,16 @@
 // xmcu
 #include <xmcu/config.hpp>
 
-// xmcu
 #if defined(STM32WB)
-#include <soc/st/arm/m4/wb/rm0434/peripherals/wwdg/wwdg.hpp>
-#endif
+// clang-format off
+// soc
+#include DECORATE_INCLUDE_PATH(soc/XMCU_SOC_VENDOR/XMCU_SOC_ARCHITECTURE/XMCU_SOC_CORE_FAMILY/XMCU_SOC_VENDOR_FAMILY/XMCU_SOC_VENDOR_FAMILY_RM/peripherals/wwdg/wwdg.hpp)
+// clang-format on
 
 namespace xmcu::hal::peripherals {
 using wwdg = xmcu::soc::XMCU_SOC_VENDOR::XMCU_SOC_ARCHITECTURE::XMCU_SOC_CORE_FAMILY::XMCU_SOC_VENDOR_FAMILY::
     XMCU_SOC_VENDOR_FAMILY_RM::peripherals::wwdg;
 } // namespace xmcu::hal::peripherals
+#else
+#error "Unsupported platform"
+#endif
