@@ -16,4 +16,13 @@
 namespace xmcu::hal::peripherals {
 using internal_flash = xmcu::soc::XMCU_SOC_VENDOR::XMCU_SOC_ARCHITECTURE::XMCU_SOC_CORE_FAMILY::XMCU_SOC_VENDOR_FAMILY::
     XMCU_SOC_VENDOR_FAMILY_RM::peripherals::internal_flash;
+
+#if defined(XMCU_LL_ONLY)
+inline
+#endif
+    namespace ll {
+using internal_flash = xmcu::soc::XMCU_SOC_VENDOR::XMCU_SOC_ARCHITECTURE::XMCU_SOC_CORE_FAMILY::XMCU_SOC_VENDOR_FAMILY::
+    XMCU_SOC_VENDOR_FAMILY_RM::peripherals::ll::internal_flash;
+} // namespace ll
+
 } // namespace xmcu::hal::peripherals
