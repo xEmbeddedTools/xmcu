@@ -8,6 +8,7 @@
 // xmcu
 #include <xmcu/config.hpp>
 
+#if defined(XMCU_SPI_PRESENT)
 // clang-format off
 // soc
 #include DECORATE_INCLUDE_PATH(soc/XMCU_SOC_VENDOR/XMCU_SOC_ARCHITECTURE/XMCU_SOC_CORE_FAMILY/XMCU_SOC_VENDOR_FAMILY/XMCU_SOC_VENDOR_FAMILY_RM/peripherals/SPI/SPI.hpp)
@@ -17,3 +18,4 @@ namespace xmcu::hal::peripherals {
 using SPI = xmcu::soc::XMCU_SOC_VENDOR::XMCU_SOC_ARCHITECTURE::XMCU_SOC_CORE_FAMILY::XMCU_SOC_VENDOR_FAMILY::
     XMCU_SOC_VENDOR_FAMILY_RM::peripherals::SPI;
 } // namespace xmcu::hal::peripherals
+#endif

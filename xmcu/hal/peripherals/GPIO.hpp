@@ -8,6 +8,7 @@
 // xmcu
 #include <xmcu/config.hpp>
 
+#if defined(XMCU_GPIO_PRESENT)
 // clang-format off
 // soc
 #include DECORATE_INCLUDE_PATH(soc/XMCU_SOC_VENDOR/XMCU_SOC_ARCHITECTURE/XMCU_SOC_CORE_FAMILY/XMCU_SOC_VENDOR_FAMILY/XMCU_SOC_VENDOR_FAMILY_RM/peripherals/GPIO/GPIO.hpp)
@@ -27,3 +28,4 @@ using gpio = xmcu::soc::XMCU_SOC_VENDOR::XMCU_SOC_ARCHITECTURE::XMCU_SOC_CORE_FA
     XMCU_SOC_VENDOR_FAMILY_RM::peripherals::ll::gpio;
 } // namespace ll
 } // namespace xmcu::hal::peripherals
+#endif
