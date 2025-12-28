@@ -53,7 +53,8 @@ public:
             return a_flag == (a_register & a_flag);
         }
 
-        template<typename Register_t, typename Mask_t> constexpr static Mask_t get(Register_t a_register, Mask_t a_mask)
+        template<typename Register_t, typename Mask_t>
+        constexpr static auto get(Register_t a_register, Mask_t a_mask)
         {
             return (a_register & a_mask);
         }
