@@ -13,9 +13,11 @@
 #include DECORATE_INCLUDE_PATH(soc/XMCU_SOC_VENDOR/XMCU_SOC_ARCHITECTURE/XMCU_SOC_CORE_FAMILY/XMCU_SOC_VENDOR_FAMILY/XMCU_SOC_VENDOR_FAMILY_RM/peripherals/internal_flash/internal_flash.hpp)
 // clang-format on
 
+#if not defined(XMCU_LL_ONLY)
 namespace xmcu::hal::peripherals {
 using internal_flash = xmcu::soc::XMCU_SOC_VENDOR::XMCU_SOC_ARCHITECTURE::XMCU_SOC_CORE_FAMILY::XMCU_SOC_VENDOR_FAMILY::
     XMCU_SOC_VENDOR_FAMILY_RM::peripherals::internal_flash;
+#endif
 
 #if defined(XMCU_LL_ONLY)
 inline

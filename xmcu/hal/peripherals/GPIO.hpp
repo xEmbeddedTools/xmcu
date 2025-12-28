@@ -14,8 +14,8 @@
 #include DECORATE_INCLUDE_PATH(soc/XMCU_SOC_VENDOR/XMCU_SOC_ARCHITECTURE/XMCU_SOC_CORE_FAMILY/XMCU_SOC_VENDOR_FAMILY/XMCU_SOC_VENDOR_FAMILY_RM/peripherals/GPIO/GPIO.hpp)
 // clang-format on
 
-namespace xmcu::hal::peripherals {
 #if not defined(XMCU_LL_ONLY)
+namespace xmcu::hal::peripherals {
 using GPIO = xmcu::soc::XMCU_SOC_VENDOR::XMCU_SOC_ARCHITECTURE::XMCU_SOC_CORE_FAMILY::XMCU_SOC_VENDOR_FAMILY::
     XMCU_SOC_VENDOR_FAMILY_RM::peripherals::GPIO;
 #endif
