@@ -35,6 +35,7 @@ concept is_desc = is_row<T> && requires {
 template<typename T>
 concept is_Input_table = requires {
     typename T::value_type;
+    typename T::containter_type;
     { T::decode_state(0) } -> std::convertible_to<std::size_t>;
 } && xmcu::look_up_tables::is_desc<typename T::value_type> && requires(const T& a) {
     a.size();
