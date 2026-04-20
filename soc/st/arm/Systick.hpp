@@ -92,6 +92,7 @@ public:
 
     void start();
     void stop();
+    void reload_reload(std::uint32_t a_relod_value);
 
     bool is_enabled()
     {
