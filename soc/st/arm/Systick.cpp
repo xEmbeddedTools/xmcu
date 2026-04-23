@@ -92,7 +92,7 @@ void Systick::stop()
     bit::flag::clear(&(SysTick->CTRL), SysTick_CTRL_ENABLE_Msk);
 }
 
-void Systick::update_reload_value(std::uint32_t a_reload_value)
+void Systick::update_and_reload_value(std::uint32_t a_reload_value)
 {
     hkm_assert(a_reload_value > 0);
 
