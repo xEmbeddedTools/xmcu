@@ -92,13 +92,13 @@ void Systick::stop()
     bit::flag::clear(&(SysTick->CTRL), SysTick_CTRL_ENABLE_Msk);
 }
 
-void Systick::reload_reload(std::uint32_t a_relod_value)
+void Systick::reload_reload(std::uint32_t a_reload_value)
 {
-    hkm_assert(a_relod_value > 0);
+    hkm_assert(a_reload_value > 0);
 
     std::uint32_t old_reload = 1 + SysTick->LOAD;
     std::uint64_t old_val = SysTick->VAL;
-    std::uint32_t new_reload = 1 + a_relod_value;
+    std::uint32_t new_reload = 1 + a_reload_value;
     std::uint32_t new_val = 0;
 
     // hkm_assert(old_reload > 0);
@@ -112,7 +112,7 @@ void Systick::reload_reload(std::uint32_t a_relod_value)
     Scoped_guard<nvic>{};
     SysTick->VAL = 0;
     start();
-    SysTick->LOAD = a_relod_value;
+    SysTick->LOAD = a_reload_value;
 }
 
 void Systick::Interrupt::enable(const IRQ_config& a_irq_config)
